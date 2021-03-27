@@ -1,0 +1,13 @@
+{
+  "name": "firebase",
+  "version": "1.0.0",
+  "description": "For firebase demos",
+  "main": "index.js",
+  "repository": "https://github.com/ericel/firebase.git",
+  "author": "Oj Obasi",
+  "license": "GNU",
+  "private": false,
+  "dependencies": {
+    "firebase": "^8.3.1"
+  }
+}

@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "firebase"
+			"path": "python"
 		},
 		{
-			"path": "python"
+			"path": "javascript"
 		}
 	]
 }
