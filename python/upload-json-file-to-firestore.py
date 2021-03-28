@@ -17,7 +17,7 @@ import json
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-
+import timeit
 # Use a service account
 cred = credentials.Certificate('service-account.json')
 firebase_admin.initialize_app(cred)
@@ -26,6 +26,8 @@ db = firestore.client()
 
 class UploadJsonFileToFirestore:
     def __init__(self) -> None:
+        # Get class running time
+        self.start = timeit.default_timer()
         # Check to make sure the command line arguements 
         # are atleast 3 arguements
         if len(sys.argv[1:]) != 3:
@@ -77,34 +79,49 @@ class UploadJsonFileToFirestore:
         else:
             print(f'Wrong file path {val}')
 
-
+    # Main class method to populate firestore 
+    # With the said data
     def upload(self):
         if  self.json_data and self.method:
-            print(len(self.json_data))
-            print(self.method)
-        
+           
             # Iterating through the json list
-            for i in self.json_data:
-                print(i)
-                doc_ref = db.collection(u'users-demos').add(i)
-        try:
-            # doc_ref = db.collection(u'users').document(u'alovelace')
-            # doc_ref.set({
-            #     u'first': u'Ada',
-            #     u'last': u'Lovelace',
-            #     u'born': 1815
-            # })
-
-            # Then query for documents
-            users_ref = db.collection(u'users')
-
-            for doc in users_ref.stream():
-                print(u'{} => {}'.format(doc.id, doc.to_dict()))
-        except Exception as e:
-            print(e)
-        pass
-
+            for idx, item in enumerate(self.json_data):
+                '''
+                 START FOR JUST FOR DEMO REASONS
+                '''
+                from pygments import highlight
+                from pygments.lexers import JsonLexer
+                from pygments.formatters import TerminalFormatter
+              
+                json_str = json.dumps(item, indent=4, sort_keys=True)
+                print(highlight(json_str, JsonLexer(), TerminalFormatter()))
+                '''
+                 END FOR JUST FOR DEMO REASONS
+                '''
+             
+                if self.method == 'set':
+                    self.set(item)
+                else:
+                    self.add(item)
+                # Successfully got to end of data;
+                # print success message
+                if idx == len(self.json_data)-1:
+                    # All the program statements
+                    stop = timeit.default_timer()
+                    print('**************************\n****SUCCESS UPLOAD*****\n**************************')
+                    print("Time taken "+str(stop - self.start))
     
+    # Collection Add method
+    # Adds all data under a collection
+    # With firebase firestore auto generated IDS
+    def add(self, item):
+        return db.collection(self.collectionname).add(item)
+    
+    # Collection document set method
+    # Adds all data under a collection
+    # With custom document IDS 
+    def set(self, item):
+        return db.collection(self.collectionname).document(str(item['id'])).set(item)
 
 uploadjson = UploadJsonFileToFirestore()
 uploadjson.upload()      
