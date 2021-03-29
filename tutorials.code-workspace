@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "javascript"
+		},
+		{
+			"path": "java"
+		},
+		{
+			"path": "php"
 		}
 	]
 }
