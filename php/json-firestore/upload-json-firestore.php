@@ -58,10 +58,13 @@ class UploadJSONFILEFIRESTORE
     # Uploads data to firestore backend
     public function upload()
     {
+
         # Read Json file
         $file = file_get_contents($this->json_file_path);
+
         # Decode Json string to associative array
         $this->data = json_decode($file, true);
+
         $i = 0;
         foreach ($this->data as $key => $value) {
             # Upload based on method

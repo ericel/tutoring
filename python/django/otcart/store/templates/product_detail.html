@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block styles %}
+<!-- Styles go here-->
+{% endblock %}
+{% block content %}
+<nav class="breadcrumb has-succeeds-separator mt-1" aria-label="breadcrumbs">
+    <ul>
+        <li class="is-size-7"><a href="/">Otcart</a></li>
+        <li class="is-size-7"><a href="#">Documentation</a></li>
+        <li class="is-size-7"><a href="#">Components</a></li>
+        <li class="is-size-7 is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
+    </ul>
+</nav>
+<div class="columns product-detail">
+    <div class="column is-two-fifths">
+
+
+        <a href="/products/detail/1">
+            <figure class="image is-4by3">
+                <img src="https://source.unsplash.com/random/1280x960?nature" alt="a random image">
+            </figure>
+        </a>
+
+        <div class="avatars-details">
+            <a href="/products/detail/1">
+                <figure class="image ">
+                    <img class="image  is-rounded  is-48x48" src="https://source.unsplash.com/random/1280x960?nature"
+                        alt="a random image">
+                </figure>
+            </a>
+            <a href="/products/detail/1">
+                <figure class="image ">
+                    <img class="image  is-rounded  is-48x48" src="https://source.unsplash.com/random/1280x960?nature"
+                        alt="a random image">
+                </figure>
+            </a>
+            <a href="/products/detail/1">
+                <figure class="image ">
+                    <img class="image  is-rounded  is-48x48" src="https://source.unsplash.com/random/1280x960?nature"
+                        alt="a random image">
+                </figure>
+            </a>
+            <a href="/products/detail/1">
+                <figure class="image">
+                    <img class="image  is-rounded  is-48x48" src="https://source.unsplash.com/random/1280x960?nature"
+                        alt="a random image">
+                </figure>
+            </a>
+        </div>
+
+    </div>
+    <div class="column">
+        <div class="columns">
+            <div class="column">
+                <h1 class="title is-5">
+                    “There are two hard things in computer science: cache invalidation, naming things, and
+                    off-by-one
+                    errors.”
+                </h1>
+                <div class="container">
+                    <div class="rating-stars is-fullwidth">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
+                                title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half"
+                                for="star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"
+                                title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half"
+                                for="star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"
+                                title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half"
+                                for="star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"
+                                title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half"
+                                for="star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"
+                                title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="starhalf" name="rating" value="half" /><label class="half"
+                                for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                            <div class="is-clearfix"></div>
+                        </fieldset>
+                        <div class="is-clearfix"></div>
+                    </div>
+                </div>
+                <!-- Price container -->
+                <div class="columns">
+                    <!-- Left side -->
+                    <div class="column">
+                        <p class="is-size-6">
+                            List price:
+                        </p>
+                        <p class="is-size-6">
+                            Price:
+                        </p>
+                        <p class="is-size-6 mt-1">
+                            You save:
+                        </p>
+
+
+                    </div>
+
+                    <!-- Right side -->
+                    <div class="column is-three-quarters">
+                        <p class="is-size-6">
+                            <s>$350.0</s>
+                        </p>
+                        <p class="is-size-4">
+                            $200.0
+                        </p>
+                        <p class="is-size-6 ">
+                            $20.0 (40%)
+                        </p>
+                    </div>
+                </div>
+                <div class="divider div-transparent div-arrow-down"></div>
+                <!-- Shipping container -->
+                <div class="columns">
+                    <!-- Left side -->
+                    <div class="column">
+                        <p class="is-size-6">
+                            Shipping:
+                        </p>
+
+
+                    </div>
+
+                    <!-- Right side -->
+                    <div class="column is-three-quarters">
+                        <p>
+                            $25.85 International Priority Shipping to Korea, South via the Global Shipping Program
+                        </p>
+
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="buttons columns is-fullwidth">
+                    <div class="column">
+                        <button class="button is-primary is-fullwidth">Add to Cart</button>
+                    </div>
+                    <div class="column">
+                        <button class="button is-link is-fullwidth">Buy Now</button>
+                    </div>
+
+                </div>
+
+
+                <!-- Returns Policy -->
+                <div class="columns">
+                    <!-- Left side -->
+                    <div class="column">
+
+                        <p>Returns</p>
+
+                    </div>
+
+                    <!-- Right side -->
+                    <div class="column is-three-quarters">
+
+                        <p>
+                            Seller does not accept returns
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="column is-two-fifths">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="is-size-5">Shop with confidence</div>
+
+                        <p class="is-size-7 is-family-sans-serif">
+                            eBay Money Back Guarantee
+                            Get the item you ordered or get your money back. Learn more- eBay Money Back Guarantee -
+                            opens
+                            in new window or tab
+                        </p>
+                        <div class="divider div-transparent div-arrow-down"></div>
+
+                        <figure class="image is-3by1">
+                            <img src="{% static 'images/payment_1x2.png' %}">
+                        </figure>
+                    </div>
+                    <footer class="card-footer">
+                        <p class="card-footer-item">
+                            <span>
+                                View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+                            </span>
+                        </p>
+                        <p class="card-footer-item">
+                            <span>
+                                Share on <a href="#">Facebook</a>
+                            </span>
+                        </p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="container">
+    <div class="slider js_variablewidth variablewidth">
+        <div class="frame js_frame">
+            <ul class="slides js_slides">
+                <li class="js_slide" style="width: 220px;">220</li>
+                <li class="js_slide" style="width: 190px;">190</li>
+                <li class="js_slide" style="width: 150px;">150</li>
+                <li class="js_slide" style="width: 130px;">130</li>
+                <li class="js_slide" style="width: 250px;">250</li>
+                <li class="js_slide" style="width: 180px;">180</li>
+                <li class="js_slide" style="width: 200px;">200</li>
+                <li class="js_slide" style="width: 140px;">140</li>
+                <li class="js_slide" style="width: 120px;">120</li>
+                <li class="js_slide" style="width: 240px;">240</li>
+            </ul>
+        </div>
+
+        <span class="js_prev prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5">
+                <g>
+                    <path fill="#2E435A"
+                        d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z" />
+                </g>
+            </svg>
+        </span>
+
+        <span class="js_next next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5">
+                <g>
+                    <path fill="#2E435A"
+                        d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z" />
+                </g>
+            </svg>
+        </span>
+    </div>
+</div>
+<div class="columns">
+    <div class="column">
+        <div class="tabs is-small">
+            <ul>
+                <li class="is-active"><a>More about</a></li>
+            </ul>
+
+        </div>
+        <p>
+            Multi-surface teething makes this teether perfect for assisting in the eruption of front, middle
+            and back teeth
+            When place in the refrigerator Nuby's PurICE technology provides gentle cooling on baby's gums
+            Easy grip design is ideal for little hands and helps with coordination; Dual surfaced teether
+            Combines exercise for young hands, gums, and teeth
+            Age: 3 months and above; BPA Free
+        </p>
+    </div>
+    <div class="column">
+        <div class="tabs is-small">
+            <ul>
+                <li class="is-active"><a>Reviews</a></li>
+            </ul>
+
+        </div>
+        Reviews
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lory.js/2.5.3/lory.min.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var variableWidth = document.querySelector('.js_variablewidth');
+        console.log(variableWidth);
+
+        lory(variableWidth, {
+            rewind: true
+        });
+    });
+</script>
+{% endblock %}
