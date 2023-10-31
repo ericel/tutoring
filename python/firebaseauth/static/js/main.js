@@ -274,7 +274,7 @@ window.FirebaseAuth = {};
           } else if (user === null && $("body.anonymous")[0]) {
             google.accounts.id.initialize({
               client_id:
-                "[GOOGLE IDENTITY CLIENT API ID]", // Get this from your google apps
+                "[GOOGLE IDENTITY CLIENT API ID]", // Get this from your google
               callback: handleCredentialResponse,
               auto_select: "false",
               ux_mode: "redirect", //popup// redirect//popup
