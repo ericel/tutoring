@@ -1,0 +1,202 @@
+/*------------------------------------
+    Element Product Page
+-------------------------------------*/
+.product-list-section {
+    margin-bottom: 4.2rem;
+    .title-link-wrapper .title::after {
+        height: 2px;
+        background-color: $body-color;
+    }
+}
+
+.product-wrapper {
+    &.row [class*='col-'] {
+        margin-bottom: 2rem;
+    }
+}
+
+.product:not(.product-single) {
+    .product-countdown-container {
+        position: absolute;
+        #{$left}: 10px;
+        #{$right}: 10px;
+        bottom: 10px;
+        white-space: nowrap;
+        overflow-x: auto;
+        background-color: rgba(34,34,34,0.8);
+        color: #fff;
+        letter-spacing: -0.025em;
+        text-align: center;
+        border-radius: .3rem;
+        padding-#{$left}: 0;
+        padding-#{$right}: 0;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s,visibility 0.3s;
+    }
+    .countdown-row {
+        display: flex;
+    }
+    .countdown-section {
+        display: inline-flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: center;
+        padding: 0.9em 0 .8em;
+    }
+    .countdown-amount, .countdown-period {
+        display: inline-block;
+    }
+    .countdown-amount {
+        font-size: 1.4em;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+    .countdown-period {
+        font-size: 1em;
+        font-weight: 500;
+        opacity: .9;
+        letter-spacing: -.035em;
+    }
+    &:hover {
+        .product-countdown-container {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+    .product-list .product-desc {
+        margin-bottom: 3.9rem;
+        line-height: 1.9;
+    }
+}
+
+// Sticky Product
+.product-sticky-content {
+    .product-list-sm {
+        display: none;
+        align-items: center;
+    }
+    .product-media {
+        flex: 0 0 8.5rem;
+        max-width: 8.5rem;
+        height: 8.5rem;
+        img {
+            height: 100%;
+        }
+    }
+    .product-name {
+        font-size: 1.4rem;
+    }
+    .product-price {
+        font-size: 1.6rem;
+    }
+    .old-price {
+        font-size: 1.6rem;
+    }
+    .product-form.container {
+        padding: 0;
+    }
+    &.fixed {
+        .product-list-sm {
+            display: flex;
+            flex: 1;
+        }
+        .product-form {
+            padding: 2rem;
+        }
+        .product-qty-form, .btn-cart {
+            margin-bottom: 0;
+        }
+        .product-qty-form {
+            margin-#{$right}: .8rem;
+            max-width: 14rem;
+            flex: 0 0 14rem;
+            label {
+                display: none;
+            }
+        }
+        .btn-cart {
+            flex: 1;
+            max-width: 21rem;
+        }
+    }
+    &.fix-top.fixed {
+        .product-form {
+            flex-wrap: nowrap;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .product-media {
+            max-width: 4.4rem;
+            flex: 0 0 4.4rem;
+            height: 4.4rem;
+        }
+        .product-name {
+            display: none;
+        }
+        .btn-cart {
+            min-width: 14rem;
+        }
+    }
+}
+
+.product-single .col-md-6 .product-bm-wrapper {
+    margin-bottom: .8rem;
+}
+
+.sticky-both-content {
+    .product-single {
+        margin-top: .4rem;
+    }
+    .product-title {
+        margin-bottom: 1.2rem;
+        line-height: 1.4;
+    }
+    .product-color-swatch {
+        margin-top: .3rem;
+    }
+    .product-size-swatch {
+        flex-wrap: nowrap;
+        align-items: flex-start;
+    }
+}
+
+.product-qty-form.with-label {
+    flex: 0 0 21.5rem;
+    max-width: 21.5rem;
+}
+@include mq(xl, max) {
+    .shop-content .product-list .product-desc {
+        margin-bottom: 2rem;
+    }
+}
+
+@include mq(sm, max) {
+    .shop-content .product-list {
+        display: block;
+        margin-bottom: 2rem;
+        .product-media {
+            flex: 0 0 100%;
+            max-width: 100%;
+            margin: 0 0 2rem 0;
+        }
+    }
+}
+
+@include mq(xs, max) {
+    .product-sticky-content.fix-top.fixed {
+        .product-media, .product-details {
+            display: none;
+        }
+        .btn-cart {
+            max-width: none;
+        }
+        .product-form {
+            padding-#{$left}: 1.5rem;
+            padding-#{$right}: 1.5rem;
+        }
+    }
+    .product-sticky-content.fixed .product-list-sm {
+        flex: none;
+    }
+}

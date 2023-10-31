@@ -1,0 +1,145 @@
+/* -----------------------------------
+    Custom Icons
+        - User Icon
+        - Minicart Icon
+        - Menu Icon
+-------------------------------------*/
+
+// User Icon
+.user-icon {
+    display: block;
+    padding-bottom: 2px;
+
+    &::before,
+    &::after {
+        content: '';
+		display: block;
+		margin-#{$left}: auto;
+        margin-#{$right}: auto;
+		// box-shadow: inset 0px 0px 1px #000;
+    }
+
+    &::before {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-bottom: 1px;
+        border: 1px solid #333;
+        box-shadow: 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 2px #333, 0px 0px 1px #333, 0px 0px 2px #333;
+    }
+
+    &::after {
+        width: 22px;
+        height: 12px;
+        border-radius:corner-values(7px 7px 0 0);
+        border: 1px solid #333;
+        box-shadow: 0px 0px 2px #333, 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 1px #333
+    }
+}
+
+// Minicart Icon
+.minicart-icon {
+    position: relative;
+    height: 2.167em;
+    text-align: center;
+
+    &::before,
+    &::after {
+        border: solid 2px;
+        border-color: #333333;
+    }
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -0.3em;
+        #{$left}: 50%;
+        transform: translateX(if-ltr(-50%,50%)) scale(0.7);
+        width: 1.32em;
+        height: 1.2em;
+        border-radius: corner-values(10px 10px 0 0);
+        border-bottom: none;
+    }
+    &::after {
+        content: '';
+        display: inline-block;
+        width: 29px;
+        height: 24px;
+        background-color: transparent;
+        border-radius: corner-values(0 0 5px 5px);
+        transform: scale(0.8);
+        margin-top: 1px;
+    }
+}
+
+// Menu Icon
+.menu-icon {
+    display: inline-block;
+	color: #fff;
+	width: 1.7rem;
+	&::before,
+	&::after {
+		display: block;
+		content: '';
+		width: 100%;
+	}
+	&::before {
+		height: 6px;
+		border-top: 2px solid;
+		border-bottom: 2px solid;
+	}
+	&::after {
+		height: 4px;
+		border-bottom: 2px solid;
+	}
+}
+
+// nav icon
+.icon-angle-left {
+    &::before {
+        content: '\e912';
+    }
+}
+.icon-angle-right {
+    &::before {
+        content: '\e913';
+    }
+}
+.icon-angle-left,
+.icon-angle-right {
+    font-family: 'Font Awesome 6 Free';
+    font-style: normal;
+}
+
+// Icon Close
+.close-icon {
+    display: block;
+	position: relative;
+	width: 30px;
+	height: 30px;
+	transform: rotateZ(45deg);
+
+	&::before,
+	&::after {
+		display: block;
+		position: absolute;
+		background-color: #ccc;
+		content: '';
+	}
+
+	&::before {
+		height: 2px;
+		width: 100%;
+		#{$left}: 0;
+        top: 50%;
+        transform: translateY(-50%);
+	}
+
+	&::after {
+		height: 100%;
+		width: 2px;
+		top: 0;
+        #{$left}: 50%;
+        transform: translateX(if-ltr(-50%,50%));
+	}
+}

@@ -1,0 +1,161 @@
+/*-------------------------------------
+    Widget
+-------------------------------------*/ 
+@include set-default(
+    (
+        widget: (
+            title: (
+                margin-bottom: 2rem,
+                padding: 1.1rem 0,
+                font-size: 1.5rem,
+                font-weight: 700,
+                text-transform: uppercase,
+                line-height: 1.2,
+                letter-spacing: -.025em,
+            )
+        )
+    )
+);
+
+.widget-title {
+    @include print_css( widget, title );
+}
+
+.widget-products {
+    .widget-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        letter-spacing: -.025em;
+        padding-bottom: .8rem;
+    }
+    .widget-body {
+        padding: 0 2rem;
+    }
+    &.widget-products-bordered {
+        .widget-body {
+            border: 1px solid $border-color;
+        }
+        .product-widget:not(:last-child) {
+            border-bottom: 1px solid $border-color;
+        }
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+        top: -1.7rem;
+        #{$right}: -1rem;
+        border: 0;
+        color: #747474;
+        font-weight: normal;
+        width: 15px;
+        height: 15px;
+        &:not(.swiper-button-disabled) {
+            &:hover,
+            &:focus,
+            &:active {
+                background: transparent;
+                border: 0;
+                color: $primary-color;
+            }
+        }
+    }
+    .swiper-button-prev {
+        transform: translateX(if-ltr(-50%,50%));
+    }
+    .swiper-button-next {
+        transform: translateX(if-ltr(50%,-50%));
+    }
+}
+
+.sidebar {
+    .widget-products {
+        .widget-body {
+            border: 0;
+            padding: 0;
+        }
+    }
+}
+
+.widget {
+    .widget-title {
+        position: relative;
+        margin: -.1rem 0;
+        padding: side-values(1.4rem 2.5rem 1.4rem 0);
+        font-weight: 600;
+        font-size: 1.6rem;
+        color: #333;
+        letter-spacing: 0;
+        border-bottom: 1px solid $border-color;
+        text-transform: capitalize;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .widget-body {
+        padding: .7rem 0 1rem;
+        opacity: 1;
+        transition: opacity .3s;
+        color: $dark-color;
+    }
+}
+
+// Collapsible Widget
+.widget-collapsible {
+    .widget-title {
+        label {
+            position: relative;
+            padding: 0 .2rem;
+            &::after {
+                position: absolute;
+                content: '';
+                #{$left}: 0;
+                bottom: -1.2rem;
+                width: 100%;
+                height: 2px;
+                background-color: $body-color;
+            }
+        }
+    }
+    .toggle-btn {
+        // display: block;
+        // position: absolute;
+        // top: 50%;
+        // transform: translateY( -50% );
+        #{$right}: .4rem;
+        margin-top: -.1rem;
+        width: 10px;
+        padding: 0;
+        opacity: 1;
+        &::before,
+		&::after {
+			content: '';
+			position: absolute;
+			border-top: 2px solid #666;
+			width: 12px;
+			transition: transform .3s;
+		}
+    }
+    > .collapsed .toggle-btn::before {
+        transform: rotate(90deg);
+    }
+    > .collapsed .toggle-btn::after {
+        transform: rotate(180deg);
+    }
+    .collapsed + .widget-body {
+        display: none;
+    }
+    .collapsed  ~ .widget-body {
+        opacity: .1;
+    }
+}
+
+.widget-author {
+    .author-image {
+        img {
+            width: 88px;
+            height: 88px;
+            border-radius: 100%;
+        }
+    }
+   
+}

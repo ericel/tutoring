@@ -1,0 +1,85 @@
+@import "./theme/init";
+@import "./base/variables";
+/* 2. Mixins */
+@import 'mixins/breakpoint';
+@import 'mixins/core';
+@import 'mixins/buttons';
+@import 'mixins/direction';
+
+
+@import './views/home_config';
+
+/* 3. Base */
+@import 'base/base';
+@import 'base/layout';
+@import 'base/grid';
+@import 'base/spacing';
+@import 'base/typography';
+@import 'base/helper';
+@import 'base/height_widths';
+@import 'base/font_size';
+/* 4. Plugins */
+@import 'components/slider';
+@import 'components/nouislider';
+
+/* 5. Component */
+@import 'components/accordion';
+@import 'components/alert';
+@import 'components/animation';
+@import 'components/banner';
+@import 'components/breadcrumb';
+@import 'components/buttons';
+@import 'components/categories';
+@import 'components/comments';
+@import 'components/cta';
+@import 'components/element';
+@import 'components/forms';
+@import 'components/icons';
+@import 'components/icon-boxes';
+@import 'components/magnific-popup';
+@import 'components/minipopup';
+@import 'components/overlay';
+@import 'components/page-header';
+@import 'components/pagination';
+@import 'components/popup';
+@import 'components/products';
+@import 'components/product-single';
+@import 'components/progress-bar';
+@import 'components/sidebar';
+@import 'components/social-icons';
+@import 'components/tab';
+@import 'components/testimonial';
+@import 'components/timeline';
+@import 'components/titles';
+@import 'components/tooltip';
+@import 'components/widget';
+@import 'components/vendor';
+@import 'components/code-popup';
+@import 'components/uploader_clipboard';
+@import 'components/card';
+@import 'components/mega_menu_slider';
+@import 'components/uploader';
+@import 'components/review';
+@import 'components/clap';
+/* 6. Header */
+@import 'base/header/header';
+@import 'base/header/dropdown';
+@import 'base/header/menu';
+
+/* 7. Footer */
+@import 'base/footer/footer';
+
+
+/* 8. ./views */
+//@import "./views/about-us";
+//@import "./views/accordion";
+@import "./views/login";
+@import "./views/products";
+@import "./views/product_detail";
+@import "./views/home";
+//@import "./views/become_vendor";
+
+/* 10. Dark theme */
+// For Darktheme generation
+// @import './theme/darktheme/dark_custom';
+// @import './theme/darktheme/darktheme';

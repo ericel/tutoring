@@ -1,0 +1,479 @@
+/*-------------------------------------
+    Footer
+        - Footer top
+        - Footer middle
+        - Footer bottom
+        - Copyright
+        - Widget newsletter
+        - Sticky Footer
+--------------------------------------*/
+
+// Variables
+@include set-default(
+    (
+        footer: (
+            font-family: $font-family,
+            font-size: 1.3rem,
+            letter-spacing: false,
+            background: #f8f8f8,
+            color: false,
+            _link-color: $body-color,
+            _link-dark-active-color: #fff,
+            _link-active-color: $primary-color,
+            top: (
+                padding: 6.8rem 0 .8rem,
+                border-top: false,
+                border-bottom: 1px solid $border-color,
+                background: false,
+                widget: (
+                    margin-bottom: 4rem,
+                    title: (
+                        padding: side-values(0 0 .6rem 0),
+                        margin-bottom: 2rem,
+                        font-family: inherit,
+                        font-size: 1.4rem,
+                        font-weight: 600,
+                        letter-spacing: 0,
+                        line-height: 1,
+                        text-transform: uppercase,
+                        color: $dark-color,
+                        border: none,
+                        cursor: text
+                    ),
+                    body: (
+                        padding: 0,
+                        color: $body-color
+                    ),
+                    list-item: (
+                        line-height: 1.2,
+                        margin-bottom: 1.5rem
+                    )
+                )
+            ),
+            middle: (
+                padding: 4.5rem 0 3.8rem,
+                letter-spacing: false,
+                border-bottom: 1px solid $border-color,
+                background: false,
+            ),
+            bottom: (
+                padding: 3rem 0,
+                background: false,
+                color: $body-color
+            ),
+            about: (
+                logo: (
+                    margin-bottom: 1rem
+                ),
+                call: (
+                    color: $dark-color,
+                    font-size: 1.8rem,
+                    font-weight: 600,
+                    line-height: 1,
+                    margin-bottom: .9rem
+                )
+            ),
+            copyright: (
+                font-family: false,
+                font-size: 1.3rem,
+                font-weight: false,
+                color: false,
+                letter-spacing: false,
+                line-height: 1.92
+            ),
+            category-box: (
+                font-weight: false,
+                name: (
+                    font-weight: 600,
+                    font-size: 1.4rem,
+                    color: $body-color,
+                    line-height: 1, // Height : 30px...
+                    letter-spacing: 0,
+                    padding-#{$right}: 2rem,
+                    margin-bottom: 1rem
+                ),
+                items: (
+                    font-weight: normal,
+                    font-size: 1.3rem,
+                    letter-spacing: 0,
+                    color: $body-color,
+                    line-height: 1, // Height : 30px...
+                    margin-bottom: 1rem
+                )
+            ),
+            social_links: (
+                color: #fff
+            )
+        ),
+    )
+);
+
+// Footer 
+.footer {
+    @include print_css( footer );
+    a {
+        @include css(color, footer, _link-color);
+        &:hover,
+            &:active,
+            &.active {
+                @include css(color, footer, _link-active-color);
+            }
+    }
+    &.footer-dark {
+        a {
+            &:hover,
+            &:active,
+            &.active {
+                @include css(color, footer, _link-dark-active-color);
+            }
+        }
+    }
+    p {
+        font-size: inherit;
+    }
+
+    .category-name {
+        @include print_css( footer, category-box, name );
+        flex-shrink: 0;
+    }
+
+    .category-box {
+        flex-wrap: wrap;      
+        display: inline-flex;
+        align-items: center;
+        @include print_css( footer, category-box );
+        &:not(:last-child) {
+            margin-bottom: 1.4rem;
+        }  
+        a {
+            @include print_css( footer, category-box, items );
+            position: relative;
+            &:hover,
+            &:active,
+            &:focus {
+               color: $primary-color;
+            }
+            &:last-child::before {
+                width: 100%;
+            }
+            &::after {
+                content: '';
+                display: inline-block;
+                width: 1px;
+                height: 13px;
+                border-#{$left}: 1px solid #ccc;
+                margin: side-values(0px 0.9rem 0 1rem);
+                vertical-align: bottom;
+            }
+
+            &:last-child::after {
+                content: none;
+            }
+        }
+    }
+
+    .social-icons-colored .social-icon {
+        color: #fff;
+    }
+}
+
+.logo-footer, .logo-footer img {
+    display: block;
+}
+
+// Footer Newsletter
+.footer-newsletter {
+    padding: 2.8rem 0;
+    .icon-box-side {
+        justify-content: #{$left};
+    }
+    .icon-box-title { 
+        margin-bottom: .2rem;
+        font-size: 1.6rem; 
+    }
+    .icon-box-icon {
+        margin-#{$right}: 2rem;
+        margin-bottom: 0.4rem;
+        i {
+            font-size: 4.7rem;
+        }
+    }
+    .icon-box-content p {
+        line-height: 1.6;
+    }
+    .input-wrapper-inline { max-width: 100%; }
+    .btn {
+        padding: 0.93em 1.85em;
+        i {
+            margin: side-values(-.2rem 0 0 .9rem);
+            font-size: 1.6rem;
+        }
+    }
+}
+
+// Footer Top
+.footer-top {
+    @include print_css( footer, top );
+    .widget {
+        @include print_css( footer, top, widget );
+    }
+
+    .widget-title {
+        @include print_css( footer, top, widget, title );
+    }
+
+    .widget-body {
+        @include print_css( footer, top, widget, body );
+        li {
+            @include print_css( footer, top, widget, list-item );
+        }
+    }
+}
+
+// Widget Middle
+.footer-middle {
+    @include print_css( footer, middle );
+}
+
+
+// Widget Bottom
+.footer-bottom {
+    @include print_css( footer, bottom );
+
+    &,
+    .container,
+    .container-fluid {
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-right {
+        justify-content: flex-end;
+        flex: 1;
+    }
+}
+
+// Widget About
+.footer .widget-about {
+    margin-top: .2rem;
+    .logo-footer {
+        @include print_css( footer, about, logo );
+    }
+
+    .widget-about-title {
+        line-height: 2.1;
+        margin-bottom: 1rem;
+        color: #333;
+        font-weight: 500;
+    }
+
+    .widget-about-call {
+        display: block;
+        @include print_css( footer, about, call );
+        &:hover {
+            color: $primary-color;
+        }
+    }
+
+    .widget-about-desc {
+        line-height: 2.15;
+        margin-bottom: 2.1rem;
+        max-width: 28rem;
+    }
+}
+
+// Copyright
+.footer .copyright {
+    @include print_css( footer, copyright );
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.payment {
+    img {
+        display: block;
+    }
+}
+
+.payment-label {
+    margin-#{$right}: 2rem;
+}
+
+// Sticky Footer
+.sticky-footer {
+    display: flex;
+    align-items: center;
+    padding: 0 4rem;
+    background: #fff;
+    > * {
+        flex: 1;
+    }
+    .cart-dropdown {
+        position: relative;
+        .dropdown-box {
+            top: auto;
+            bottom: 100%;
+            #{$right}: 0;
+            min-width: 34rem;
+            padding: 2rem 3rem 3rem;
+            margin-bottom: 2.1rem;
+            transform: translateY(20px);
+            transition: transform .3s, opacity .3s, visibility .3s;
+            // &::after {
+            //     position: absolute;
+            //     content: '';
+            //     top: 100%;
+            //     right: 4.7rem;
+            //     border: 9px solid transparent;
+            //     border-top: 9px solid #fff;
+            // }
+        }
+        &:hover {
+            .dropdown-box {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+    .products {
+        border: none;
+    }
+    .product-name a {
+        padding: 0;
+    }
+    .cart-total {
+        padding-top: 1rem;
+    }
+}
+.sticky-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #666;
+    margin: side-values(1.4rem 0 1.3rem); 
+    i, .cart-dropdown & i {
+        font-size: 2.3rem;
+        color: #666;
+    }
+    p {
+        margin-top: .9rem;
+        margin-bottom: 0;
+        font-size: 1rem;
+        line-height: 1;
+        letter-spacing: .025em;
+        text-transform: uppercase;
+    }
+    &.search-toggle p {
+        margin-top: 1rem;
+    }
+    &:hover {
+        color: $primary-color;
+        i {
+            color: inherit;
+        }
+    }
+}
+
+.footer-dark {
+    background-color: #222;
+    .footer-top,
+    .footer-middle,
+    .category-box a::after {
+        border-color: #454545;
+    }
+    a,
+    .widget-about .widget-about-title,
+    .category-name {
+        color: $light-color;
+    }
+    .widget-about .widget-about-call,
+    .widget-title {
+        color: #fff;
+    }
+}
+
+// Responsive 
+@include mq(lg) {
+    .footer-top .col-lg-3 {
+        flex: 0 0 22.22%;
+        max-width: 22.22%;
+    }
+}
+
+@include mq(md) {
+    .sticky-footer {
+        display: none;
+    }
+}
+
+@include mq(lg, max) {
+    .footer-top {
+        padding-bottom: 2.7rem;
+    }
+    .footer-middle {
+        .category-box {
+            a:first-child {
+                margin-#{$left}: 0;
+            }
+        }
+    }
+    .footer-newsletter .icon-box-side { justify-content: center; }   
+}
+
+@include mq(md, max) {
+    .footer-newsletter .icon-box-icon {
+        margin-#{$right}: 0;
+    }
+
+    .footer-bottom {
+        &,
+        > .container {
+            display: block;
+        }
+        .footer-left,
+        .footer-right {
+            justify-content: center;
+        }
+
+        .footer-left {
+            margin-bottom: .2rem;
+        }
+        .footer-right {
+            flex-direction: column;
+        }
+        .payment-label {
+            margin: side-values(0 0 1rem 0);
+        }
+    }
+}
+
+@include mq(xs, max) {
+    .sticky-footer {
+        padding: 0;
+        .hs-toggle .input-wrapper {
+            #{$right}: 1rem;
+        }
+        .cart-dropdown .dropdown-box {
+            min-width: 30rem;
+            #{$right}: -5.4rem;
+        }
+    }
+    .footer-newsletter {
+        .icon-box-side { flex-direction: column; }
+        .icon-box-icon { margin: 0 0 2rem; }
+        .icon-box-content { text-align: center; }
+        .form-control { text-align: center; }
+        .input-wrapper-inline {
+            display: block;
+            text-align: center;
+        }
+        .btn { margin-top: 2rem; }
+    }
+}

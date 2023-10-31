@@ -1,0 +1,67 @@
+/*----------------------------
+    Overlay
+-----------------------------*/
+// Overlay Dark
+.overlay-dark,
+.overlay-light {
+    figure, .banner {
+        position: relative;
+    }
+
+    figure::after,
+    figure > a::after,
+    &.banner::after {
+        content: '';
+        position: absolute;
+        #{$left}: 0;
+        #{$right}: 0;
+        top: 0;
+        bottom: 0;
+        background: $dark-color;
+        opacity: 0;
+        transition: opacity .3s, background .3s, transform .3s;
+    }
+
+    &:hover figure::after,
+    &:hover figure > a::after,
+    &.banner:hover::after {
+        opacity: .1;
+    }
+
+    &.banner-fixed::after,
+    &.post > figure::after {
+        content: none;
+    }
+    &.post > figure > a::after {
+        z-index: 1;
+    }
+}
+
+.overlay-light figure::after,
+.banner.overlay-light::after {
+    background: $border-color-light;
+}
+
+// Overlay Zoom
+.overlay-zoom {
+    overflow: hidden;
+    img {
+        transition: transform .35s
+    }
+    &:hover {
+        img {
+            transform: scale(1.08);
+        }
+    }
+}
+
+// Overlay Rotate
+.overlay-rotate {
+    overflow: hidden;
+    img {
+        transition: transform .35s;
+    }
+    &:hover {
+        transform: rotateZ(3deg) scale(1.08);
+    }
+}

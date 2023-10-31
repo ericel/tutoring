@@ -1,0 +1,990 @@
+/*------------------------------------------
+    Menu
+        - Default
+        - Menu(Main Menu)
+            - Megamenu
+            - Menu Banner
+            - Tips
+
+        -Mobile Menu
+            - MobileMenuWrapper
+            - MobileMenuContainer
+            - MobileMenu
+            - MobileMenuOverlay
+            - MobileMenuCloseButtonn
+        
+        - Vertical Menu
+        - Category Menu
+-----------------------------------------*/
+
+@include set-default (
+    (
+        menu: (
+            // Active Color
+            active: (
+                color: $primary-color
+            ),
+            // Ancestor
+            ancestor: (
+                _gap: 3rem,
+                padding: side-values(1.8rem 0 1.7rem 0),
+                font-family: false,
+                font-weight: 600,
+                font-size: 1.4rem,
+                letter-spacing: -.009em,
+                line-height: 1.1,
+                text-transform: capitalize,
+                color: false,
+                _active-color: false
+            ),
+            // Tip
+            tip: (
+                padding: side-values(0.3rem 0.5rem .2rem),
+                border-radius: .2rem,
+                font-size: 1rem,
+                font-weight: 600,
+                line-height: 1,
+                color: #fff,
+                text-transform: uppercase,
+                _hot-color: #ff9742,
+                _new-color: $primary-color
+            ),
+            // Mega menu
+            megamenu: (
+                padding: false,
+                min-width: 80rem,
+                background: #fff,
+                title: (
+                    padding: false,
+                    font-family: false,
+                    font-size: 1.4rem,
+                    font-weight: 600,
+                    line-height: 1,
+                    letter-spacing: -.025em,
+                    text-transform: uppercase
+                )
+            ),
+            // Submenu
+            submenu: (
+                active: (
+                    color: $primary-color
+                ),
+                padding: 2rem 0,
+                background: #fff,
+                font-family: $font-family,
+                font-size: 1.4rem,
+                font-weight: 400,
+                line-height: 1,
+                letter-spacing: 0,
+                text-transform: false,
+                color: #666666
+            )
+        ),
+
+        mobile-menu: (
+            color: #eeeeee,
+            text-transform: capitalize,
+            font-size: 1.2rem,
+            font-weight: 400,
+            line-height: 1.5,
+            letter-spacing: false,
+            // Menu Container
+            container: (
+                max-width: 296px,
+                padding: 2rem 1.5rem,
+                background: #222,
+                border-color: #333,
+                font-family: $font-family
+            ),
+            // Mobile Menu Item
+            item: (
+                padding: side-values(1.3rem .6rem 1.3rem 1rem)
+            ),
+            // Active
+            active: (
+                color: false,
+                border: false
+            ),
+            // Title
+            title: (
+                text-transform: uppercase,
+                font-size: 1.4rem,
+                font-family: false,
+                font-weight: 600,
+                color: #fff
+            ),
+            // Overlay
+            overlay: (
+                background: #000,
+                opacity: .5
+            )
+        ),
+        category-menu: (
+            padding: 1rem 0,
+            background: #fff,
+            border: false,
+            _item-active-color: $primary-color,
+            // Megamenu
+            megamenu: (
+                min-width: 68.5rem,
+            ),
+            // Title
+            title: (
+                padding: .7rem 0,
+                font-size: 1.4rem,
+                font-weight: normal,
+                font-family: $font-family,
+                letter-spacing: -.01em,
+                color: #fff,
+                line-height: 1,
+                border-bottom: false
+            ),
+            // Icon
+            icon: (
+                margin-#{$right}: .7rem,
+                font-size: 1.7rem,
+                width: 1.7rem,
+                color: false
+            ),
+            // Submenu
+            submenu: (
+                title: (
+                    letter-spacing: -.025em,
+                    font-weight: 600,
+                    color: #333333,
+                ),
+                active: (
+                    color: $primary-color
+                ),
+                padding: 2rem 0,
+                background: #fff,
+                font-family: $font-family,
+                font-size: 1.3rem,
+                font-weight: false,
+                line-height: 1.5,
+                letter-spacing: 0,
+                color: #666,
+                text-transform: false
+            ),
+            ancestor: (
+                _split-line: 1px solid #eeeeee,
+                padding: 1.3rem 1rem,
+                min-height: false,
+                text-transform: capitalize,
+                font-size: 1.3rem,
+                font-weight: 500,
+                line-height: 1.1,
+                letter-spacing: -.007em,
+                color: #666666
+            )
+        )
+    )
+);
+
+// Default Menu Style
+.menu {
+    display: flex;
+    align-items: center;
+    a {
+        display: inline-block;
+        color: inherit;
+        &:hover {
+            color: $primary-color;
+        }
+    }
+    .menu-title {
+        margin-bottom: 2rem;
+        @include print_css( menu, megamenu, title );
+    }
+    .submenu {
+        @include print_css( menu, submenu );
+        .has-submenu > a::after {
+            content: '\f054';
+            font-weight: 600;
+            font-size: 0.9rem;
+            transform: translateY(-50%);
+        }
+    }
+    li {
+        position: relative;
+        @include css( line-height, menu, submenu, line-height );
+        a {
+            padding: side-values(0.7rem 0 .8rem 0);
+        }
+         ul,
+        .megamenu {
+            position: absolute;
+            top: -9999px;
+            #{$left}: 100%;
+            margin: 0;
+            box-shadow: 0 2px 35px rgba(0,0,0,0.1);
+            z-index: 1001;
+            visibility: hidden;
+            opacity: 1;
+            transition: transform .3s ease-out;
+            transform: translate3d(0, -10px, 0);
+        }
+        .megamenu {
+            padding: 0 1rem;
+        }
+        > .submenu {
+            min-width: 21.5rem;
+            li {
+                padding: 0 1.9rem;
+            }
+        }
+    }
+
+    li:hover,
+    .show {
+        > .submenu,
+        .megamenu {
+            visibility: visible;
+            top: -2rem;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    > li {
+        @include css( margin-#{$right}, menu, ancestor, _gap );
+        &:last-child {
+            margin-#{$right}: 0;
+        }
+        > a {
+            position: relative;
+            @include print_css( menu, ancestor );
+            &::after {
+                margin-#{$left}: .6rem;
+            }
+        }
+        > .submenu,
+        .megamenu {
+            #{$left}: -1.5rem;
+        }
+
+        &:hover,
+        &.active {
+            > a {
+                &:not(.menu-title) {
+                    @include css( color, menu, active, color );
+                }
+            }
+        }
+        &:hover,
+        &.show {
+            > .submenu,
+            .megamenu {
+                top: 100%;
+            }
+        }
+    }
+    .has-submenu {
+        > a {
+            display: block;
+            position: relative;
+        }
+    }
+    > .has-submenu {
+        > a::after {
+            margin-top: 1px;
+            #{$right}: -16px;
+        }
+    }
+    &.no-arrow {
+        > li {
+            > a::after {
+                content: none;
+            }
+        }
+    }
+    .megamenu {
+        ul {
+            position: static;
+            box-shadow: none;
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+
+.active-underline {
+    > li {
+        > a::before {
+            content: '';
+            position: absolute;
+            #{$left}: 0;
+            margin-top: 17px;
+            width: 100%;
+            border-top: 3px solid;
+            border-color: inherit;
+            transform-origin: #{$right} center;
+            transform: scale(0, 1);
+            transition: transform .3s ease;
+        }
+        &:hover,
+        &.active {
+            > a::before {
+                transform-origin: #{$left} center;
+                transform: scale(1, 1);
+            }
+        }
+    }
+}
+
+.has-submenu {
+    > a::after {
+        display: inline-block;
+        position: absolute;
+        #{$right}: 0;
+        top: 50%;
+        line-height: 0;
+        vertical-align: middle;
+        font-family: 'Font Awesome 5 Free';
+        font-size: 1rem;
+        color: inherit;
+        content: '\f078';
+    }
+}
+
+/* Mega Menu */
+.megamenu {
+    display: flex;
+    @include print_css( menu, megamenu );
+    > li {
+        flex: 1;
+        padding: side-values(2.7rem 1rem 0);
+        &.row:last-child {
+            padding: side-values(0 2rem 2rem 0);
+        }
+    }
+    ul {
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: $body-color;
+        padding: 0;
+        letter-spacing: 0;
+        
+        &:last-child {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.megamenu-sm {
+    min-width: 40rem;
+}
+
+/* Menu Baner */
+.megamenu .menu-banner {
+    height: calc(100% + 2.7rem);
+    margin: -2.7rem -1rem 0;
+    overflow: hidden;
+    figure {
+        height: 100%;
+    }
+    img {
+        height: 100%;
+        object-fit: cover;
+    }
+    .btn:not(.btn-outline) {
+        padding: 0;
+        letter-spacing: .005em;
+    }
+}
+.menu-banner1 {
+    .banner-content {
+        #{$left}: 10%;
+        bottom: 5%;
+    }
+    .banner-subtitle {
+        font-size: 7.187rem;
+        letter-spacing: -.05em;
+        transform: rotateZ(-90deg) translate(if-ltr(2%,-2%), -50%);
+        margin-bottom: 35px;
+    }
+    .banner-title {
+        position: relative;
+        margin-bottom: 1.1rem;
+        font-size: 2.4rem;
+        letter-spacing: -.05em;
+        line-height: 1.3;
+        span {
+            display: block;
+            font-size: 2.6rem;
+            color: #547ca5;
+        }
+    }
+}
+.menu-banner2 {
+    .banner-content {
+        top: 8%;
+        #{$left}: 12.7%;
+    }
+    .banner-price-info {
+        font-weight: 500;
+    }
+    .banner-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 1.4rem;
+    }
+}
+.menu-banner3 {
+    .banner-content {
+        bottom: 2.8rem;
+        #{$left}: 12.8%;
+    }
+    .banner-subtitle {
+        font-size: 1.6rem;
+    }
+    .banner-title {
+        margin-bottom: .1rem;
+        font-size: 2.4rem;
+        line-height: 1.25;
+    }
+    .banner-price-info {
+        margin-bottom: 2.3rem;
+        font-size: 2rem;
+    }
+}
+.menu-banner4 {
+    .banner-content {
+        top: 6.9%;
+        #{$left}: 12.7%;
+    }
+    .banner-subtitle {
+        margin-bottom: 1.1rem;
+        font-size: 1.4rem;
+        color: #ccc;
+    }
+    .banner-title {
+        margin-bottom: .3rem;
+        font-size: 2.2rem;
+        line-height: 1.1;
+    }
+    .banner-price-info {
+        margin-bottom: 1.6rem;
+        font-size: 2.2rem;
+    }
+    .btn-outline {
+        padding: 0.75em 1.45em;
+        letter-spacing: 0;
+        &:hover, &:active, &:focus {
+            color: $primary-color;
+            background-color: $white-color;
+            border-color: $white-color;
+        }
+    }
+}
+.menu-banner5 {
+    .banner-content {
+        margin-top: -0.2rem;
+        #{$left}: 2rem;
+        &.text-right {
+            #{$right}: 2rem;
+        }
+    }
+    .banner-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 0.4rem;
+    }
+    .banner-title {
+        margin-bottom: 1.4rem;
+        font-size: 2rem;
+    }
+    .banner-price-info {
+        font-size: 1.3rem;
+    }
+}
+
+// Tip
+.tip {
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    #{$left}: 7px;
+    @include print_css( menu, tip );
+
+    &.tip-new {
+        @include css( background-color, menu, tip, _new-color );
+    }
+    &.tip-hot {
+        @include css( background-color, menu, tip, _hot-color );
+    }
+}
+
+// MobileMenu
+// Mobile Menu Wrapper
+.mobile-menu-wrapper {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    #{$left}: 0;
+    #{$right}: 0;
+    bottom: 0;
+    z-index: 2400;
+    font-family: $font-family;
+    transition: visibility .4s;
+}
+
+// Mobile Menu Container
+.mobile-menu-container {
+    @include css( max-width, mobile-menu, container, max-width );
+    @include css( padding, mobile-menu, container, padding );
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    @include css( background, mobile-menu, container, background );
+    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.5);
+    transform: translateX(if-ltr(-#{get( mobile-menu, container, max-width )},#{get( mobile-menu, container, max-width )}));
+    transition: transform .4s;
+    .input-wrapper {
+        display: flex;
+        margin-bottom: 3rem;
+        align-items: center;
+        .form-control {
+            min-height: 4rem;
+            padding-top: .9rem;
+            padding-bottom: .8rem;
+            color: #777;
+            border: 1px solid;
+            @include css( border-color, mobile-menu, container, border-color);
+            border-#{$right}: 0;
+            background-color: transparent;
+            font-size: 1.2rem;
+            border-radius:corner-values(.3rem 0 0 .3rem);
+        }
+        .btn-search {
+            padding: 0;
+            min-width: 4.8rem;
+            background-color: transparent;
+            color: #fff;
+            font-size: 2rem;
+            align-self: stretch;
+            border: 1px solid #333;
+            border-#{$left}: 0;
+            border-radius: corner-values(0 .3rem .3rem 0);
+            i {
+                margin: side-values(0 0 .4rem 0);
+            }
+        }
+    }
+    .mobile-menu {
+        margin-top: .4rem;
+        margin-bottom: .5rem;
+        @include css( background, mobile-menu, container, background );
+    }
+    .tab-content {
+        background-color: transparent;
+    }
+    .nav {
+        border: none;
+        flex-wrap: nowrap;
+        .nav-item {
+            margin: 0;
+            width: 50%;
+        }
+    }
+    
+    .nav-link {
+        margin-bottom: -2px;
+        padding: 1rem;
+        font-size: 1.3rem;
+        color: #fff;
+        border-bottom: 2px solid;
+    }
+
+    .nav-item.show .nav-link,
+    .nav-item .nav-link.active {
+        color: $primary-color;
+        border-color: $primary-color;
+    }
+    &.scrollable::-webkit-scrollbar-thumb, .sidebar-content::-webkit-scrollbar-thumb {
+        margin-#{$right}: 2px;
+        background: rgba(255,255,255,.1);
+        border-radius: 7px;
+        cursor: pointer;
+    }
+    .tab-pane {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #fff;
+    }
+}
+// MobileMenu
+.mobile-menu {
+    line-height: 1.5;
+    @include print_css( mobile-menu );
+
+    ul {
+        display: none;
+        width: 100%;
+    }
+
+    > li {
+        a {
+            display: flex;
+            align-items: center;
+            svg {
+                width: 15px;
+                height: 15px;
+                margin-#{$right}: 10px;
+                stroke: #fff;
+                fill: #fff;
+                vertical-align: middle;
+                transition: color .3s;
+            }
+        }
+        &:hover,
+        &.active {
+            svg {
+                stroke: $secondary-color;
+                fill: $secondary-color;
+            }
+        }
+        &:last-child {
+            padding-bottom: .5rem;
+        }
+    }
+    > li:not(:last-child) {
+        border-bottom: 1px solid #2E3237;
+    }
+    li {
+        a {
+            display: block;
+            position: relative;
+            @include css( padding, mobile-menu, item, padding);
+            color: inherit;
+            transition: color .3s;
+        }
+        i {
+            display: inline-block;
+            margin-top: -.3rem;
+            margin-#{$right}: 1rem;
+            font-size: 1.8rem;
+            line-height: 0;
+            vertical-align: middle;
+        }
+        // List Padding
+        li { 
+            a {
+                padding-#{$left}: 2.4rem;
+            }
+
+            li {
+                a {
+                    padding-#{$left}: 3.6rem;
+                }
+            }
+        }
+        &.expanded,
+        &.show,
+        &:hover {
+            > a {
+                @include print_css( mobile-menu, active );
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+.mobile-menu-title {
+    margin-bottom: .5rem;
+    @include print_css( mobile-menu, title );
+}
+// MobileMenu Overlay
+.mobile-menu-overlay {
+    position: fixed;
+    #{$left}: 0;
+    top: 0;
+    bottom: 0;
+    #{$right}: 0;
+    @include css( background, mobile-menu, overlay, background);
+    opacity: 0;
+    transition: opacity .4s;
+}
+// MobileMenu Close Button
+.mobile-menu-close {
+    position: fixed;
+    #{$left}: calc(100vw - 35px);
+    top: 25px;
+    i {
+        font-size: 2.8rem;
+        color: #e1e1e1;
+    }
+    transition: opacity .3s;
+    opacity: 0;
+    z-index: 1;
+}
+.mmenu-active {
+    overflow: hidden;
+    .mmenu-anim {
+        > li,
+        & {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .page-wrapper {
+        // if page wrapper has margin-#{$left}, then recalculate it's movement
+        margin-#{$left}: #{get( mobile-menu, container, max-width )};
+        margin-#{$right}: -#{
+            get( mobile-menu, container, max-width ) - 
+            if( get( base, page-wrapper, margin-#{$left} ), get( base, page-wrapper, margin-#{$left} ), 0 )
+        };
+    }
+    .mobile-menu-wrapper {
+        visibility: visible;
+    }
+    .mobile-menu-container {
+        transform: translateX(0);
+    }
+    .mobile-menu-overlay {
+        @include css( opacity, mobile-menu, overlay, opacity);
+    }
+
+    .mobile-menu-close {
+        opacity: 1;
+    }
+}
+// MobileMenu SlideToggle Button
+.toggle-btn {
+    display: block;
+    position: absolute;
+    padding: 6px;
+    #{$right}: 0;
+    top: 50%;
+    transform: translateY( -50% );
+    opacity: .6;
+
+    &::before {
+        content: "\e913";
+        display: block;
+        font-size: .8rem;
+        font-weight: 600;
+        font-family: 'Font Awesome 6 Free';
+        line-height: 1;
+        transition: transform .5s;
+
+        .show > a & {
+            transform: rotate(630deg);
+        }
+    }
+}
+
+/* Category Menu */
+.category-menu {
+    @include print_css( category-menu );
+
+    i {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 0;
+        @include print_css( category-menu, icon );
+    }
+
+    > li {
+        > a {
+            display: block;
+            @include print_css( category-menu, ancestor );
+            &::before {
+                content: none;
+            }
+        }
+
+        &:not(:last-child) {
+            > a {
+                @include css( border-bottom, category-menu, ancestor,  _split-line );
+            }
+        }
+        &:last-child {
+            > a i {
+                margin: side-values(0 0 0 0.4rem);
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+        }
+    }
+
+    li {
+        .megamenu {
+            padding: side-values(0 0 0 2rem);
+        }
+        &:last-child {
+            flex: none;
+        }
+        &:hover {
+            > a:not(.menu-title) {
+                @include css( color, category-menu, _item-active-color );
+                i {
+                    color: inherit;
+                }
+            }
+        }
+    }
+
+    > .has-submenu:hover {
+        > a {
+            &::after {
+                #{$right}: .5rem;
+            }
+        }
+    }
+
+    .megamenu {
+        @include print_css( category-menu, megamenu );
+        >li:not(:last-child) {
+            padding: side-values(2.8rem 2rem 0 0rem);
+        }
+        .menu-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .divider {
+            border: 1px solid #eeeeee;
+            border-bottom: 0px;
+            margin: .5rem 0 2rem;
+        }
+
+        li a:not(.btn) {
+            padding-top: .8rem;
+        }
+
+        &.type2 {
+            display: block;
+            figure {
+                text-align: center;
+            }
+        }
+    }
+}
+
+/* Vertical Menu */
+.vertical-menu {
+    display: block;
+    min-width: 24rem;
+    i {
+        &.w-icon-electronics,
+        &.w-icon-furniture {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+    }
+    > li {
+        margin-#{$right}: 0;
+        padding: 0 1rem;
+
+        > ul,
+        .megamenu {
+            transform: translate3d(if-ltr(-15px,15px), 0, 0);
+        }
+        
+        > a {
+            display: block;
+            &::after {
+                content: none;
+            }
+        }
+
+        &:hover,
+        &.active {
+            > ul,
+            .megamenu {
+                #{$left}: 100%;
+                top: 0rem;
+            }
+        }
+    }
+    > li:first-child {
+        &:hover,
+        &.active {
+            > ul,
+            .megamenu {
+                top: -1rem;
+            }
+        }
+    }
+    > .has-submenu {
+        > a {
+            &::after {
+                content: '\f105';
+                position: absolute;
+                #{$right}: 1rem;
+                line-height: 0;
+                font-weight: 600;
+                font-size: 1.2rem;
+                transition: #{$right} .3s;
+            }
+        }
+    }
+}
+
+/* Horizontal Menu */
+.horizontal-menu {
+    width: 100%;
+    padding: 1rem 3.2rem;
+    background-color: $dark-color;
+    border-radius: .5rem;
+    color: #fff;
+    overflow-x: auto;
+    > li {
+        flex: 1;
+        margin-#{$right}: 3.05rem;
+        text-align: center;
+        &:not(:last-child) > a {
+            border-bottom: none;
+        }
+        > a {
+            padding: .8rem 1rem;
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+        &:hover {
+            i {
+                transform: translateY(-.5rem);
+            }
+        }
+        &:last-child > a i {
+            margin: 0 0 .9rem;
+            font-size: 3rem;
+            font-weight: 400;
+        }
+    }
+    i {
+        display: block;
+        width: auto;
+        height: 3rem;
+        margin: 0 0 .9rem;
+        font-size: 3rem;
+        line-height: inherit;
+        transition: transform .3s;
+    }
+    &::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+    }
+}
+
+@include mq('xl') {
+    .category-menu {
+        .megamenu.type2 {
+            min-width: 88rem;
+        }
+    }
+}
+
+@include mq('xl', 'max') {
+    .main-nav .menu .megamenu {
+        #{$left}: -18rem;
+    }
+    .category-menu {
+        .megamenu.type2 {
+            min-width: 70rem;
+        }
+    }
+}

@@ -1,0 +1,68 @@
+$lenghts: (
+    0: 0px,
+    10: 10px,
+    20: 20px,
+    32: 32px,
+    40: 40px,
+    50: 50px,
+    60: 60px,
+    70: 70px,
+    80: 80px,
+    90: 90px,
+    // 100: 100px,
+    110: 110px,
+    120: 120px,
+    130: 130px,
+    140: 140px,
+    150: 150px,
+    160: 160px,
+    200: 200px,
+    240: 240px,
+    260: 260px,
+    300: 300px,
+    320: 320px,
+    350: 350px,
+);
+
+@each $name, $value in $lenghts {
+    .h-#{$name} {
+        height: $value !important;
+    }
+    .w-#{$name} {
+        width: $value !important;
+    }
+}
+
+.w-full {
+    width: 100%;
+}
+.w-full-screen {
+    width: 100vh;
+}
+// View height classes
+.h-full {
+    height: 100%;
+}
+.h-full-screen {
+    height: 100vh;
+}
+.h-full-screen-min {
+    min-height: 100vh;
+}
+.h-100vh-70px {
+    height: calc(100vh - 70px);
+}
+.h-100vh-280px {
+    height: calc(100vh - 280px);
+}
+.h-auto {
+    height: auto !important;
+}
+
+@media (min-width: 768px) {
+    .h-full-screen-scrollable {
+        max-height: 100vh !important;
+        overflow: scroll !important;
+    
+    }
+}

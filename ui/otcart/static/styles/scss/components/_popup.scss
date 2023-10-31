@@ -1,0 +1,493 @@
+/*---------------------------------
+    Popup
+        - Popup
+        - Popup Close
+        - Popup Arrow
+        - Popup Content
+        - Popup - Login
+        - Popup - Image PhotoSwipe
+-----------------------------------*/
+
+// Popup
+.mfp-wrap {
+    z-index: 2500;
+}
+.mfp-bg {
+    z-index: 2500;
+    background: #000;
+    opacity: 0.4;
+    transition: opactiy .3s ease-out;
+
+    &.mfp-ready.mfp-fade {
+        opacity: .4;
+    }
+    &.mfp-remove {
+        opacity: 0;
+    }
+}
+.mfp-container {
+    padding: 4rem 2rem;
+}
+
+// Popup content 
+.mfp-content > * {
+    position: relative;
+    margin: auto;
+    background: #fff;
+    opacity: 0;
+    box-shadow: 5px 5px 20px rgba(0,0,0,.1);
+    transition: all .3s;
+
+    .mfp-ready & {
+        opacity: 1;
+    }
+    .mfp-remove & {
+        opacity: 0;
+    }
+}
+
+// Popup Arrow
+.pswp__button--arrow--left,
+.pswp__button--arrow--right {
+    color: #fff;
+
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: 'Font Awesome 6 Free';
+    border: 0;
+    opacity: .5;
+    #{$right}: 10%;
+    #{$left}: auto;
+    transition: opacity .3s;    
+}
+.pswp__ui > button {
+    &::before {
+        background: transparent;
+        position: static;
+    }
+    &:hover {
+        opacity: 1;
+    }
+}
+.pswp__button--arrow--right::before {
+    content: "\e913";
+}
+.pswp__button--arrow--left {
+    #{$left}: 10%;
+    #{$right}: auto;
+
+    &::before {
+        content: "\e912";
+    }
+}
+
+// Popup - Image PhotoSwipe
+// .pswp__bg {
+//     background-color: rgba(0,0,0,.4);
+// }
+// .pswp__img--placeholder--blank {
+//     background-color: #F2F3F5;
+// }
+// .pswp__ui--fit .pswp__caption, .pswp__ui--fit .pswp__top-bar {
+//     background-color: transparent;
+// }
+// .pswp__caption__center {
+//     text-align: center;
+// }
+
+// @media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
+//     .pswp--svg .pswp__button--arrow--left:before, 
+//     .pswp--svg .pswp__button--arrow--right:before {
+//         background-image: none !important;
+//     }
+// }
+
+// Product Image Popup - PhotoSwipe
+.pswp {
+	z-index: 3010;
+	.pswp__bg {
+		background-color: rgba(0,0,0,.7);
+	}
+}
+.pswp__scroll-wrap {
+	transform: scale(0.5);
+	opacity: 0;
+	transition: opacity .5s, transform .5s;
+}
+.pswp__top-bar,
+.pswp__caption {
+	transition: opacity 333ms cubic-bezier(.4,0,.22,1), background-color .3s .5s;
+}
+.pswp:not(.pswp--animated-in) .pswp__top-bar,
+.pswp:not(.pswp--animated-in) .pswp__caption {
+	background-color: transparent;
+}
+// pswp pswp--supports-fs pswp--open pswp--notouch pswp--css_animation pswp--svg pswp--zoom-allowed pswp--visible pswp--animated-in
+.pswp--visible .pswp__scroll-wrap {
+	transform: none;
+	opacity: 1;
+}
+
+.pswp__img {
+	border-radius: 3px;
+	// box-shadow: 0 0 15px 10px var(--Font Awesome 6 Free-dark-color, $dark-color);
+}
+.pswp__img--placeholder--blank {
+	background-color: #F2F3F5;
+}
+.pswp__caption {
+	min-height: auto;
+}
+.pswp__caption__center {
+	text-align: center;
+}
+
+.pswp__counter{
+    #{$left}: 0;
+}
+
+.pswp__button{
+    float: #{$right};
+}
+
+// Product Image Popup - Arrow
+.pswp__button--arrow--left,
+.pswp__button--arrow--right {
+	width: 4.8rem;
+	height: 4.8rem;
+	margin-top: -2.4rem;
+	color: #fff;
+	border-radius: 50%;
+	font-size: 1.6rem ;
+	font-weight: 900;
+	font-family: 'Font Awesome 5 Free';
+	text-align: center;
+	opacity: .5;
+	right: 10%;
+	left: auto;
+	transition: opacity .3s;
+	border: 2px solid;
+}
+.pswp__ui > button {
+	&::before {
+		background: transparent;
+		position: static;
+	}
+	&:hover {
+		opacity: 1;
+	}
+}
+.pswp__button--arrow--right::before {
+	content: "\f054";
+}
+.pswp__button--arrow--left {
+	left: 10%;
+	right: auto;
+	&::before {
+		content: "\f053";
+	}
+}
+
+// Popup - Newsletter modal
+.newsletter-popup {
+    display: flex;
+    max-width: 78rem;
+    padding: 8.1rem 4.8rem;
+    margin: auto;
+    background-position: center;
+    background-size: cover;
+    border-radius: 1rem;
+    background-image: url(../../images/newsletter-1.jpg);
+    .popup-media {
+        margin-bottom: 1.7rem;
+    }
+    
+    h4 {
+        margin-bottom: .4rem;
+        font-size: 2rem;
+        span {
+            display: inline-block;
+            margin-#{$left}: 0.4rem;
+            font-weight: 800;
+        }
+    }
+
+    h2 {
+        margin-bottom: 1.1rem;
+        font-weight: 800;
+        font-size: 2.8rem;
+        line-height: 1.2;
+    }
+    
+    p {
+        margin-bottom: 2.3rem;
+        line-height: 1.75
+    }
+    
+    .input-wrapper-inline {
+        max-width: 34rem;
+        margin-bottom: 3rem;
+    
+        .form-control {
+            min-height: 4.4rem;
+            border-color: #ccc;
+            color: #666;
+        }
+        .btn {
+            padding-top: .9em;
+            padding-bottom: .9em;
+        }
+    }
+    label {
+        padding-#{$left}: 2.7rem;
+        &::before {
+            border-color: #999;
+        }
+    }
+}
+
+.newsletter-content {
+    max-width: 36rem;
+}
+
+// Popup - Product 
+.mfp-product {
+    .mfp-container {
+        padding: 4rem 3rem 2rem;
+    }
+    .mfp-content {
+        max-width: 88rem;
+        margin: auto;
+    }
+    .product-popup {
+        display: block;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        //overflow: hidden !important;
+    }
+    .product-details {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}
+body .product-popup {
+    display: none;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    text-rendering: auto;
+    position: absolute;
+    z-index: 99999999;
+  }
+.swiper-button-prev::before{
+    content: '';
+}
+.swiper-button-next::before{
+    content: '';
+}
+
+// Popup Login
+.login-popup {
+    margin: 4.2rem auto 5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 50rem;
+    padding: 3.3rem 5rem 2.6rem;
+    .nav.nav-tabs .nav-item {
+        width: calc(50% - .5rem);
+        margin: 0;
+        &:first-child {
+            margin-#{$right}: 1rem;
+        }
+    }
+    .nav-item .nav-link {
+        padding: 1.3rem 0;
+        font-size: 1.6rem;
+        font-weight: 700;
+        &::after {
+            border-top-width: 2px;
+            transform: none;
+        }
+    }
+    .tab-pane {
+        padding-top: 3.3rem;
+        padding-bottom: 2.6rem;
+        a:not(.btn):hover {
+            text-decoration: underline;
+        }
+    }
+    #sign-in {
+        font-size: 1.4rem;
+    }
+    .form-group {
+        margin-bottom: 2.6rem;
+        label {
+            display: block;
+            margin-bottom: .5rem;
+        }
+    }
+    .form-control {
+        min-height: 4.4rem;
+    }
+    .form-checkbox {
+        margin-top: 2.2rem;
+        margin-bottom: 2.3rem;
+        a {
+            font-size: 1.2rem;
+            color: #a94442;
+        }
+    }
+    .btn {
+        display: block;
+        padding-top: .79em;
+        padding-bottom: .79em;
+    }
+    p {
+        margin-bottom: 1.9rem;
+    }
+    #sign-up {
+        p {
+            margin-bottom: 2.1rem;
+            line-height: 1.84;
+        }
+    }
+    .social-icon {
+        margin-#{$right}: .8rem;
+    }
+}
+
+@include mq(md) {
+    .product-popup .product-details {
+        position: absolute;
+        overflow-y: auto;
+        top: 0;
+        #{$left}: 2rem;
+        width: calc(100% - 3rem);
+        height: 100%;
+    }
+}
+// Close button
+.mfp-close {
+    width: 18px;
+    height: 18px;
+    transform: rotateZ(45deg) scale(1);
+    top: -2.7rem;
+    #{$right}: 0;
+    #{$left}: auto;
+    opacity: 1;
+    transition: transform .3s;
+    span {
+        display: none;
+    }
+    &:active {
+        top: -2.7rem;
+    }
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        top: 0;
+        #{$left}: calc(50% - 1px);
+        background-color: #fff;
+    }
+    &::after {
+        width: 100%;
+        height: 2px;
+        top: calc(50% - 1px);
+        #{$left}: 0;
+    }
+    &:hover {
+        transform: rotateZ(135deg) scale(1.5);
+    }
+}
+
+// Popup Zoom effect
+.mfp-ready.mfp-zoom-popup .mfp-content {
+    transform: scale(1);
+}
+.mfp-zoom-popup .mfp-content, .mfp-removing.mfp-zoom-popup .mfp-content {
+    transition: .4s ease-in-out; 
+    transform: scale(0.8); 
+}
+
+
+// Popup fade effect
+.mfp-ready.mfp-fadein-popup .mfp-content {
+    animation-duration: .4s;
+    animation-name: fadeIn;
+}
+.mfp-fadein-popup .mfp-content,
+.mfp-removing.mfp-fadein-popup .mfp-content {
+    animation-duration: .4s;
+    animation-name: fadeOut;
+}
+
+// Popup video
+.mfp-video-popup {
+    .mfp-content {
+        max-width: 100rem;
+    }
+    video {
+        width: 100%;
+    }
+    .mfp-close {
+        top: 2rem;
+        #{$right}: 2rem;
+    }
+}
+
+@include mq('md') {
+    .mfp-product {
+        .product-popup {
+            padding: 3rem;
+            .product-form-group {
+                display: block;
+            }
+            .action-group {
+                margin-#{$left}: 0;
+            }
+        }
+    }
+}
+
+@include mq(md, max) {
+    .newsletter-popup {
+        max-width: 40rem;
+        min-height: 40rem;
+        padding: 0rem 2rem;
+        background-image: url(../../images/newsletter-2.jpg);
+        text-align: center;
+        align-items: center;
+        .form-checkbox {
+            justify-content: center;
+        }
+        .input-wrapper-inline {
+            display: block;
+            margin-#{$left}: auto;
+            margin-#{$right}: auto;
+            max-width: 24rem;
+            .form-control {
+                margin-bottom: 1rem;
+                border-radius: 3rem;
+                border-width: 1px;
+            }
+            .btn {
+                border-radius: 3rem;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@include mq(xs, max) {
+    .mfp-product .mfp-container {
+        padding-#{$left}: 1.5rem;
+        padding-#{$right}: 1.5rem;
+    }
+    .login-popup {
+        padding-#{$left}: 2rem;
+        padding-#{$right}: 2rem;
+    }
+}

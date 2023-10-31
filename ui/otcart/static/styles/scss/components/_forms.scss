@@ -1,0 +1,342 @@
+/*------------------------
+    Form
+        - Form Control
+        - Input Wrapper
+-------------------------*/
+
+@include set-default(
+    (
+        form: (
+            input-group: (
+                height: 4.4rem,
+                color: $body-color,
+                border-color: #ccc
+            )
+        )
+    )
+);
+
+.form .form-control {
+    margin-bottom: 2rem;
+}
+input:-internal-autofill-selected {
+    background-color: #fff !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    min-height: 4.7rem;
+    padding: .85rem 2rem;
+    border: 1px solid $border-color;
+    font-size: 1.4rem;
+    font-family: $font-family;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #999;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 0;
+
+    &::placeholder {
+        color: inherit;
+        font-family: inherit;
+    }
+    &::-webkit-input-placeholder {
+        color: inherit;
+    }
+    &::-moz-placeholder {
+        color: inherit;
+    }
+    &.form-solid {
+        background-color: #fff;
+        border: 0;
+        color: #8d8d8d;
+    }
+    &.form-control-md {
+        font-size: 1.3rem;
+        min-height: 4.4rem;
+    }
+    &.form-control-sm {
+        font-size: 1.2rem;
+        min-height: 4rem;
+    }
+}
+
+textarea {
+    font-family: inherit;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+// Select Box, Select Menu
+.select-box,
+.select-menu {
+    position: relative;
+
+    select {
+        position: relative;
+        max-width: 14.6rem;
+        min-height: auto;
+        width: 100%;
+        height: 100%;
+        padding-#{$left}: 9px;
+        padding-#{$right}: 27px;
+        border: 1px solid #e3e3e3;
+        color: inherit;
+        background-color: transparent;
+        font-size: 1.2rem;
+        font-family: inherit;
+        letter-spacing: inherit;
+        z-index: 1;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &::before {
+        content: '\e910';
+        font-family: 'Font Awesome 6 Free';
+        font-size: 9px;
+        font-weight: 600;
+        line-height: 1;
+        position: absolute;
+        #{$right}: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.select-box option {
+    font-size: 1.2rem;
+}
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    select::-ms-expand { display: none }
+    select:focus::-ms-value { background: transparent; color: currentColor }
+}
+
+// Input Wrapper
+.input-wrapper {
+    input {
+        flex: 1;
+        min-width: 40px;
+        font-size: 1.4rem;
+        font-family: $font-family;
+        border-width: side-values(1px 0 1px 1px);
+    }
+}
+.input-wrapper-inline {
+    display: flex;
+    position: relative;
+    max-width: 67.5rem;
+    width: 100%;
+    .btn {
+        line-height: 1;
+    }
+}
+.input-wrapper-rounded {
+    .form-control {
+        border-radius: .4rem;
+    }
+}
+.input-wrapper-round {
+    .form-control {
+        position: relative;
+        border-radius: 3rem;
+    }
+    .btn {
+        border-radius: 3rem;
+        line-height: 1;
+    }
+    .form-control {
+        border-radius: corner-values(3rem 0 0 3rem);
+    }
+    .btn {
+        border-radius: corner-values(0 3rem 3rem 0);
+    }
+}
+
+// Input Group
+.input-group {
+    display: inline-flex;
+    @include css(height, form, input-group, height);
+    position: relative;
+    //width: 18rem;
+    width: 100%;
+    .form-control {
+        flex: 1;
+        font-size: 1.3rem;
+        padding: side-values(0 1.4rem 0 1.8rem);
+        height: inherit;
+        min-height: auto;
+        max-width: 100%;
+        -webkit-appearance: textfield;
+        @if ( get(form, input-group, border-color) ) {
+            border: solid get(form, input-group, border-color);
+            border-width: 1px;
+        }
+        @include css(color, form, input-group, color);
+        &:hover, &:focus {
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+        }
+    }
+    button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        #{$right}: 1.5rem;
+        padding: 0;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 50%;
+        background-color: #eee;
+        color: #666;
+        font-size: 1.4rem;
+        border: none;
+        + button {
+            margin-#{$right}: 3.3rem;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+// Custom Radio
+.custom-radio {
+    position: relative;
+    .custom-control-input {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+    }
+    .custom-control-label {
+        padding-#{$left}: 3rem;
+        &::after {
+            content: '';
+            position: absolute;
+            display: inline-flex;
+            align-items: center;
+            #{$left}: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 1px solid;
+            border-radius: 2px;
+            color: #999;
+            font-family: 'Font Awesome 5 Free';
+            font-size: 1rem;
+            font-weight: 900;
+            width: 1.8rem;
+            height: 1.8rem;
+            cursor: pointer;
+            transition: color .3s, background-color .3s, content .3s, border .3s;
+        }
+        &.round {
+            &::after {
+                border-radius: 50%;
+            }
+        }
+    }
+    .custom-control-input:checked ~ .custom-control-label {
+        &::after {
+            content: '\f00c';
+            background-color: $primary-color;
+            color: #fff;
+            border: 2px solid $primary-color;
+            padding-#{$left}: 2px;
+        }
+        &.color-dark {
+            &::after {
+                background-color: $dark-color;
+                border-color: $dark-color;
+            }
+        }
+    }
+}
+
+// Custom Checkbox
+.custom-checkbox {
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    width: 1.8rem;
+    height: 1.8rem;
+    cursor: pointer;
+
+    & + label {
+        display: inline-block;
+        position: relative;
+        padding-#{$left}: 2.5rem;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            #{$left}: 0;
+            width: 18px;
+            height: 18px;
+            line-height: 15px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+
+            @include only-for-ie() {
+                line-height: 14px;
+            }
+        }
+    }
+    &:checked + label::before,
+    &.checked + label::before {
+        content: '\f00c';
+        border-color: #222;
+        background: #222;
+        color: #fff;
+        font-size: 9px;
+        font-weight: 600;
+        font-family: 'Font Awesome 5 Free';
+        text-align: center;
+    }
+}
+
+.btn-absolute {
+    input.form-control {
+        width: 100%;
+        padding-#{$left}: 2rem;
+        color: #999;
+        font-size: 1.4rem
+    }
+
+    .btn {
+        position: absolute;
+        width: auto;
+        height: 100%;
+        min-width: 4.4rem;
+        #{$right}: 0;
+        font-size: 1.3rem;
+        &:hover {
+            color: $primary-color
+        }
+    }
+}
+.full_editor {
+    .CodeMirror {
+        font-size: 2rem !important;
+    }
+}
+@media screen and (min-width: 768px) {
+    .full_editor {
+        .CodeMirror-sizer {
+            min-height: 100vh !important;
+        }
+    }
+    
+}

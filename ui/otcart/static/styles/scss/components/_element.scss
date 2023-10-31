@@ -1,0 +1,63 @@
+/*----------------------------------------
+    Element section
+-----------------------------------------*/
+
+.element-section {
+    .section-title {
+        margin-bottom: 1.7rem;
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 0;
+    }
+    .section-desc {
+        max-width: 50rem;
+    }
+    .element {
+        display: block;
+        padding: 3.1rem 0 3.6rem;
+        background-color: #fff;
+        box-shadow: 0 2rem 3rem rgba(0,0,0,0.05), 0 0 5px rgba(0,0,0,0.05);
+        border-radius: 1rem;
+        svg {
+            fill: #aaa;
+            stroke: #aaa;
+            stroke-dashoffset: 1500;
+            stroke-dasharray: 1500;
+            transition: transform .3s, fill .5s;
+        }
+        &:hover {
+            svg {
+                transform: scale(1.6);
+                stroke-dashoffset: 0;
+                stroke: $primary-color;
+                fill: transparent;
+                transition: transform .3s, fill .5s, stroke-dashoffset 6s;
+            }
+            p {
+                color: $primary-color;
+            }
+        }
+        p {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #333;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 0;
+            transition: color .4s;
+        }
+        &.element-vendor {
+            padding: 2.5rem 0 3.6rem;
+            p {
+                margin-top: 0.6rem;
+            }
+        }
+    }
+}
+
+@include mq(xs, max) {
+    .element-section .element {
+        max-width: 23.2rem;
+        margin: 0 auto;
+    }
+}

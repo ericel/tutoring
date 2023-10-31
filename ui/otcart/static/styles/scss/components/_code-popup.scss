@@ -1,0 +1,204 @@
+/*------------------------------------
+    Code Popup
+        - show code wrapper
+            - show code button
+        - boxed button
+            - box-btn
+        - code popup
+            - code-copy
+            - code-content
+-------------------------------------*/
+
+// show code button
+.show-code{
+    position: absolute !important;
+    padding: 3px 1rem;
+    width: auto !important;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #26c;
+    color: #fff !important;
+    border-radius: 3px;
+    font-size: 1.4rem;
+    font-family: monospace;
+    font-weight: 600;
+    line-height: 1.6;
+    opacity: 0;
+    z-index: 1000;
+    transition: opacity .3s;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:hover{
+        background: #37d;
+        opacity: 1;
+    }
+}
+
+// show code wrapper
+.show-code-action{
+    position: relative;
+
+    &:hover{
+        >.show-code{
+            opacity: 1;
+        }
+    }
+
+    >.btn-copy:hover{
+        background: #37d;
+    }
+}
+// when create show code wrapper
+.show-code-added >.show-code{
+    opacity: .35;
+}
+
+// fixed box button
+.boxed-button{
+    position: fixed;
+    top: 26.8%;
+    right: 5px;
+    z-index: 1;
+    
+    .box-btn{
+        display: flex;
+        align-items: center;
+        background: #33363b;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: background-color .3s;
+
+        &.enabled {
+            background: #26c;
+        }
+
+        span{
+            font-family: monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 32px;
+            font-size: 16px;
+            line-height: 0;
+        }
+
+        p{
+            display: inline-block;
+            margin-bottom: 0;
+            width: 0;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            transition: width .3s,padding .3s;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        &:hover{
+            p{
+                width: 15rem;
+            }
+        }
+    }
+}
+
+// popup modal
+.code-popup {
+    border-radius: 5px;
+    width: 1000px;
+    max-width: 100%;
+    z-index: 4000;
+
+    .mfp-close{
+        top: 2rem;
+        right: 2rem;
+
+        &:active{
+            top: 2rem;
+        }
+    }
+}
+
+// code content
+.code-content{
+    border-radius: 5px;
+    background: #1e1e1e;
+
+    .CodeMirror{
+        background-color: transparent;
+        margin: 1rem 2rem 2rem;
+        height: 58rem;
+        color: #d4d4d4;
+    }
+
+    .code-text {
+        display: block!important;
+        opacity: 0;
+        padding: 0;
+        border: none;
+        height: 1px
+    }
+    
+    .code-copy {
+        background: #3c3c3c;
+        font-weight: 600;
+        border-radius: 5px 5px 0 0;
+        padding: 2rem;
+        box-shadow: 0 15px 15px -15px rgba(0,0,0,0.1);
+
+        a{
+            color: #ccc;
+            transition: color .3s;
+
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+
+    .CodeMirror-vscrollbar::-webkit-scrollbar {
+        width: 5px
+    }
+    
+    .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+        margin-right: 2px;
+        background: rgba(255,255,255,0.3);
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color .3s
+    }
+
+    .CodeMirror-hscrollbar::-webkit-scrollbar {
+        height: 5px;
+    }
+    
+    .CodeMirror-hscrollbar::-webkit-scrollbar-thumb {
+        margin-bottom: 2px;
+        background: rgba(255,255,255,0.3);
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color .3s
+    }
+
+    .CodeMirror-scrollbar-filler{
+        left: 0;
+        bottom: 0;
+        width: 100% !important;
+        background: #1e1e1e;
+    }
+
+    .CodeMirror-hscrollbar{
+        bottom: 1.7rem;
+    }
+
+    .copy-icon{
+        font-size: 2rem;
+        vertical-align: middle;
+        margin-right: .6rem;
+        line-height: 0;
+    }
+}

@@ -1,0 +1,48 @@
+/*-------------------------
+    Page Header
+        - Page Header
+        - Page Title
+        - Page Subtitle
+--------------------------*/
+
+$page-header-background: #eee !default;
+
+// Page Header
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    //height: 18rem;
+    height: auto;
+    background-color: $page-header-background;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+// Page Title 
+.page-title {
+    font-size: 3.4rem;
+    font-weight: 700;
+    letter-spacing: -.025em;
+    line-height: 1.1;
+    margin-bottom: 0.2rem;
+}
+
+// Page Subtitle
+.page-subtitle {
+    margin-bottom: 0;
+    font-size: 1.8rem;
+    font-weight: normal;
+    letter-spacing: 0;
+    line-height: 1.6;
+    color: #666;
+}
+
+.cart,
+.checkout {
+    .page-header {
+        height: 134px;
+        background: #fff;
+    }
+}

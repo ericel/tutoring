@@ -1,0 +1,271 @@
+/*---------------------
+    Alert
+        - Default
+        - Simple Alert
+        - Success Alert
+        - Primary Alert
+----------------------*/
+// Alert Round
+.alert-rounded {
+    border-radius: .4rem;
+}
+
+// Default
+.alert {
+    position: relative;
+    padding: side-values(1.4rem 3.5rem 1.4rem 2rem);
+    font-size: 1.4rem;
+    font-family: $font-family;
+    line-height: 1.75;
+    border: 1px solid;
+    letter-spacing: -.003em;
+    border-radius: .3rem;
+    .close-icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        vertical-align: middle;
+        &::before {
+            height: 1px;
+        }
+        &::after {
+            width: 1px;
+        }
+    }
+    ul {
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+        padding-#{$left}: 3.9rem;
+        list-style-type: none;
+        li {
+            position: relative;
+            line-height: 1.9;
+            &::before {
+                position: absolute;
+                content: '\e969';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 600;
+                font-size: 1.3rem;
+                left: -1.9rem;
+                top: 50%;
+                transform: translateY( -50% );
+                margin-top: .1rem;
+            }
+        }
+        a {
+            color: inherit;
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}
+.alert-title {
+    font-size: 1.4rem;
+    color: inherit;
+    line-height: inherit;
+    margin-bottom: 0;
+    letter-spacing: .01em;
+    font-weight: 600;
+}
+
+// Close Button
+.btn-close {
+    .close-icon {
+        &::before,
+        &::after {
+            transition: background-color .3s;
+        }
+    }
+    &:hover {
+        .close-icon::before,
+        .close-icon::after {
+            background-color: #000;
+        }
+    }
+}
+
+// Alert Success
+.alert-success {
+    border-color: $success-color-light;
+    color: $success-color;
+    &.alert-bg {
+        background-color: $success-color-light;
+    }
+}
+
+// Alert Primary
+.alert-primary {
+    border-color: $primary-color-light;
+    color: $primary-color;
+    &.alert-bg {
+        background-color: $primary-color-light;
+    }
+    .close-icon {
+        &::before,
+        &::after {
+            background-color: $primary-color;
+        }
+    }
+}
+
+// Alert Warning
+.alert-warning {
+    border-color: $secondary-color-light;
+    color: $warning-color;
+    &.alert-bg {
+        background-color: #fff1d7;
+        border-color: #fff1d7;
+    }
+    .close-icon {
+        &::before,
+        &::after {
+            background-color: $secondary-color;
+        }
+    }
+}
+
+// Alert Error
+.alert-error {
+    border-color: #f7e5e5;
+    color: $alert-color;
+    &.alert-bg {
+        background-color: #f7e5e5;
+        color: #a94442;
+    }
+    .close-icon {
+        &::before,
+        &::after {
+            background-color: $alert-color;
+        }
+    }
+}
+
+// Alert Dark 
+.alert-dark {
+    border-color: $dark-color;
+    color: #fff;
+    &.alert-bg {
+        background-color: $dark-color;
+    }
+    .close-icon {
+        &::before,
+        &::after {
+            background-color: $white-color;
+        }
+    }
+}
+
+// Alert Inline
+.alert-inline {
+    .alert-title {
+        display: inline-block;
+    }
+    &.alert-block {
+        padding-top: 1.5rem;
+        padding-bottom: 1.2rem;
+        .alert-title {
+            margin-#{$right}: 1rem;
+            i {
+                font-size: 1.6rem;
+                margin-#{$right}: 1rem;
+            }
+        }
+    }
+}
+
+// Alert Icon
+.alert-icon {
+    padding: side-values(1.4rem 2.2rem 1.4rem 1.9rem);
+    i {
+        display: inline-block;
+        vertical-align: middle;
+        margin: side-values(0 .8rem 0 .1rem);
+        font-size: 1.8rem;
+        line-height: 1;
+        &.w-icon-cog { margin: side-values(0 .8rem 0rem 0.1rem); }
+        &.fas,
+        &.far {
+            margin-bottom: .3rem;
+            margin-#{$left}: .1rem;
+        }
+        &.w-icon-exclamation-triangle { font-size: 1.8rem; }
+    }
+}
+
+// Alert Button
+.alert-button {
+    padding: 1.2rem 1.9rem 1.9rem;
+    letter-spacing: 0;
+    .btn:not(:last-child) {
+        margin-#{$right}: .6rem;
+    }
+    &:not(.alert-block) {
+        padding: side-values(1rem 2.2rem 1rem 1rem);
+        .btn {
+            margin-#{$right}: 1.5rem;
+            
+        }
+    }
+    p {
+        max-width: 49rem;
+        margin-bottom: 2.2rem;
+        font-size: 1.3rem;
+    }
+    .alert-title {
+        margin-bottom: 0.6rem;
+        letter-spacing: -.01em;
+    }
+    &.alert-block .btn-rounded {
+        padding-#{$left}: 1.9em;
+        padding-#{$right}: 1.9em;
+    }
+    .btn-error {
+        background-color: #fff;
+        border-color: #fff;
+        color: $alert-color;
+    }
+}
+
+// Alert Block
+.alert-block {
+    display: block;  
+    .alert-title {
+        letter-spacing: -.01em;
+    }      
+    .btn-close {
+        position: absolute;
+        top: 1.9rem;
+        #{$right}: 1.9rem;
+    }
+    &.alert-bg {
+        .alert-title i {
+            margin-#{$right}: .8rem;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+// Alert Cart Product 
+.alert-cart-product {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-style: dashed;
+    .btn-success {
+        padding: 0.86em 1.37em;
+        margin-#{$right}: 1.9rem;
+    }
+    .btn-close.btn-link {
+        margin: side-values(0 1rem 0 auto);
+        padding-bottom: 0;
+        i {
+            &::after, &::before {
+                background-color: $success-color;
+            }
+        }
+    }
+}
+.summary-section {
+    margin-bottom: 3.7rem;
+}

@@ -1,0 +1,103 @@
+ .code-editor{
+   position: relative;
+    height: 100% !important;
+    border-radius: 4px;
+   
+    .code-editor textarea{
+        border: 0px !important;
+    }
+    .CodeMirror {
+        height: fit-content !important;
+        .CodeMirror-sizer {
+            min-height: 10vh!important;
+            font-size: 1.6rem !important;
+            border-radius: 4px;
+        }
+    }
+    .editor{
+        position: relative;
+    }
+    .editor-output-container{
+        border-bottom: 1px solid #ddd !important;
+        .editor-output{
+            padding: -2.4rem 2rem;
+            border: 0px !important;
+            background-color: #282a36!important;
+            color: #f8f8f2!important;
+           // height: 120px;
+            overflow: scroll;
+        }
+    }
+    .editor-toolbar-mid {
+        position: relative;
+        height: 25px !important;
+        border: 1px solid $primary-color;
+        padding-left: 2rem;
+        background: #f7f7f7;
+        padding-top: 2.5px;
+        background-color: #282a36!important;
+        color: #ffffff!important;
+        button{
+            background: none !important;
+            border: 0px !important;
+            cursor: pointer !important;
+            color: #ffffff;
+            .run-code {
+                    color: #50fa7b !important;
+            
+            }
+            .clear-output {
+            
+                    color: red !important;
+            
+            }
+        }
+    }
+    .copy-code-wrap {
+        height: 34px;
+        width: 34px;
+        position: absolute;
+        top: 50px;
+        right: 2px;
+        z-index: 10;
+        cursor: pointer;
+        .copy-code {
+            height: 32px;
+            width: 32px;
+            position: absolute;
+            top: -40px !important;
+            right: 12px !important;
+            background: $primary-color;
+            border-radius: 50%;
+            z-index: 10;
+            transition: 0.2s;
+        }
+        .copy-code::after {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 600;
+            font-size: 16px;
+            content: "\f328";
+            color: #fff;
+            position: absolute;
+            top: 3px;
+            left: 10px;
+        }
+        .copy-code-wrap:active .copy-code {
+            transform: translate(0, 0) scale(0.9);
+        }
+        .animate {
+            transform: translate(0, 0) scale(1.12);
+        }
+        
+        .tooltip {
+            font-size: 15px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+    }
+}
+
+iframe {
+    border: 0px !important;
+    width: 100% !important;
+}
+

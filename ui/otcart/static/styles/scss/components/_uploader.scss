@@ -1,0 +1,30 @@
+#files {
+    overflow-y: scroll !important;
+    min-height: 320px;
+}
+@media (min-width: 768px) {
+	#files {
+		min-height: 0;
+	}
+}
+#debug {
+	overflow-y: scroll !important;
+	height: 180px;	
+}
+
+.dm-uploader {
+	border: 0.25rem dashed #A5A5C7;
+	text-align: center;
+}
+.dm-uploader.active {
+	border-color: red;
+
+	border-style: solid;
+}
+
+img.uploaded-prod-priview {
+width: 100px !important;
+height: 100px !important;
+object-fit: cover;
+vertical-align: middle;
+}

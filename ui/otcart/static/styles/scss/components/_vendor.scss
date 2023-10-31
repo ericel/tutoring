@@ -1,0 +1,916 @@
+/*----------------------
+    Vendor
+----------------------*/
+@include set-default (
+    (
+        vendor: (
+            products: (
+                grid: (
+                    columns: 3,
+                    padding: 2.5px,
+                    margin: -2.5px,
+                    _spacing: 5px
+                )
+            ),
+            logo: (
+                _width: 7rem
+            ),
+            detail: (
+                padding: 1.8rem 0
+            ),
+            name: (
+                display: inline-block,
+                max-width: 100%,
+                margin-bottom: .5rem,
+                font-weight: 600,
+                font-size: 1.5rem,
+                text-transform: capitalize,
+                letter-spacing: -0.025em,
+                line-height: 1.4,
+            ),
+            product-count: (
+                font-size: 1.2rem,
+                display: inline-block,
+                vertical-align: middle,
+                margin-bottom: .5rem,
+            ),
+            banner: (
+                _min-height: 18rem,
+            ),
+            button: (
+                display: block,
+                margin-bottom: 2rem,
+                font-size: 1.2rem,
+                font-weight: 600,
+                text-transform: uppercase,
+                color: #ff9933,
+            ),
+            widget-banner: (
+                details: (
+                    margin-top: -4.5rem,
+                    padding-bottom: 2rem,
+                    padding-#{$right}: 2rem,
+                    padding-#{$left}: 2rem
+                ),
+                logo: (
+                    max-width: 9rem,
+                    margin: 0 auto 1.3rem auto,
+                    border-radius: 50%,
+                    background-color: $primary-color
+                ),
+                name: (
+                    margin-bottom: 1.5rem,
+                    font-size: 1.8rem,
+                    text-transform: uppercase,
+                    letter-spacing: 0,
+                )
+            )
+        )
+    )
+);
+
+.vendor-widget {
+    margin-bottom: 2rem;
+    .vendor-name {
+        vertical-align: middle;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        @include print_css(vendor, name);
+        a {
+            color: inherit;
+        }
+        &:hover {
+            color: $primary-color;
+        }
+    }
+}
+
+.vendor-products {
+    &.grid-type {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, calc(100% / #{get(vendor, products, grid, columns)}));
+        @include css(margin, vendor, products, grid, margin);
+        width: calc(100% + #{get(vendor, products, grid, _spacing)});
+        grid-auto-rows: 1fr;
+        > * {
+            @include css(padding, vendor, products, grid, padding);
+        }
+    }
+    .lg-item {
+        grid-column-end: span 2;
+        grid-row-end: span 2;
+    }
+    .sm-item {
+        grid-column-end: span 1;
+        grid-row-end: span 1;
+    }
+    .product-media {
+        height: 100%;
+        border-radius: .5rem;
+        border: 1px solid transparent;
+        overflow: hidden;
+        transition: border-color .3s;
+        img {
+            height: 100%;
+        }
+    }
+}
+
+.vendor-logo {
+    max-width: #{get(vendor, logo, _width)};
+    flex: 0 0 #{get(vendor,logo, _width)};
+    margin-#{$right}: 1rem;
+}
+
+.vendor-details {
+    display: flex;
+    align-items: center;
+    @include print_css(vendor, detail);
+}
+
+.vendor-product-count {
+    @include print_css(vendor, product-count);
+}
+
+.vendor-banner {
+    @include css(min-height, vendor, banner, _min-height);
+    a, img {
+        min-height: inherit;
+    }
+    a {
+        display: block;
+    }
+}
+
+.visit-vendor-btn {
+    @include print_css(vendor, button);
+    &:hover {
+        color: $primary-color;
+    }
+}
+
+// Vendor wiget 1
+.vendor-widget-1 {
+    .product-media:hover {
+        border-color: $primary-color;
+    }
+    .vendor-personal {
+        margin-top: .2rem;
+    }
+    .ratings-container {
+        margin-bottom: 0;
+    }
+}
+
+// Vendor widget 2
+.vendor-widget-2 {
+    padding: 2rem;
+    border: 1px solid $border-color;
+    border-radius: .5rem;
+    overflow: hidden;
+    transition: border-color .3s;
+    &:hover {
+        border-color: $primary-color;
+    }
+    .vendor-details {
+        padding-top: 0;
+        padding-bottom: 2rem;
+    }
+    .product-media {
+        border: none;
+    }
+    .ratings-container {
+        margin-bottom: 0;
+    }
+}
+
+// Vendor widget 3
+.vendor-widget-3 {
+    .vendor-logo {
+        border-radius: .5rem;
+        overflow: hidden;
+    }
+    .vendor-details {
+        padding: 2rem 0;
+    }
+    .vendor-personal {
+        padding-top: .3rem;
+    }
+    .ratings-container {
+        margin-bottom: 0;
+    }
+    .ratings-container:not(:last-child) {
+        margin-bottom: .5rem;
+    }
+}
+
+// Vendor widget banner
+.vendor-widget-banner {
+    border: 1px solid $border-color;
+    border-radius: .5rem;
+    overflow: hidden;
+    transition: border-color .3s, box-shadow .3s;
+    .product-media {
+        border: none;
+    }
+    .vendor-details {
+        display: block;
+        text-align: center;
+        padding-top: 0;
+        @include print_css(vendor, widget-banner, details);
+    }
+    .vendor-logo {
+        position: relative;
+        flex: none;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+        @include print_css(vendor, widget-banner, logo);
+        img {
+            transition: transform .3s;
+            @include css(border-radius, vendor, widget-banner, logo, border-radius);
+        }
+    }
+    .vendor-name {
+        @include print_css(vendor, widget-banner, name);
+    }
+    .ratings-container {
+        justify-content: center;
+        margin-bottom: 1rem;
+        .ratings-full {
+            margin-#{$right}: 0;
+        }
+    }
+    .vendor-product-count {
+        display: block;
+        margin-bottom: .6rem;
+        font-size: 1.4rem;
+    }
+    &:hover {
+        box-shadow: 5px 0 20px rgba(0,0,0,0.08);
+        border-color: transparent;
+        .vendor-logo img {
+            transform: translateY(-1rem);
+        }
+    }
+}
+
+.store {
+    position: relative;
+    border-radius: .5rem;
+    overflow: hidden;
+    .ratings-container {
+        font-size: 1.3rem;
+        margin-bottom: .5rem;
+    }
+    .store-banner {
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }    
+}
+
+.store-content {
+    position: absolute;
+}
+
+.store-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.9rem;
+    color: #fff;
+    a {
+        display: inline-block;
+        text-transform: capitalize;
+        font-size: 2rem;
+        line-height: 1;
+        color: inherit;
+        text-shadow: rgba(0, 0, 0, 0.8) 0 1px 0;
+        font-weight: 600;
+        letter-spacing: -.025em;
+    }
+}
+
+.featured-label {
+    background: #2d54a3;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.2rem 1rem;
+    box-shadow: 0px 0px 25px -5px #afafaf;
+    border-radius: .3rem;
+    margin-#{$left}: 1.4rem;
+    display: inline-block;
+}
+
+.seller-info-list {
+    margin: 0;
+    padding-#{$left}: 1.6em;
+    .store-address, .store-phone {
+        font-size: 1.4rem;
+    }
+    > * {
+        line-height: 1.6;
+        letter-spacing: -.025em;
+        margin-bottom: 0.8rem;
+        color: #fff;
+        opacity: .8;
+        a {
+            color: inherit;
+        }
+        i {
+            margin-#{$left}: -2.2rem;
+            margin-#{$right}: 0.3rem;
+            vertical-align: middle;
+            font-size: 1.5rem;
+            line-height: 0;
+        }
+    }
+    .store-phone, .store-email {
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
+
+
+.store-address {
+    font-size: 1.3rem;
+    color: #fff;
+    opacity: .8;
+    line-height: 1.8;
+}
+
+.store-rating, .store-open {
+    color: #fff;
+    opacity: .8;
+}
+
+.store-footer {
+    position: relative;
+    padding: 2.3rem 2rem;
+}
+
+.btn.btn-icon-right.btn-visit i {
+    font-size: 2rem;
+    margin-#{$left}: .4rem;
+    margin-bottom: .4rem;
+}
+
+.seller-brand {
+    border-radius: 50%;
+    background-color: #ff9742;
+    width: 8rem;
+    height: 8rem;
+    img {
+        border-radius: 50%;
+        transition: transform .3s;
+    }
+}
+
+// Vendor Brand 
+.vendor-brand {
+    max-width: 15rem;
+    margin: 0 auto;
+    text-align: center; 
+    .brand {
+        border: 1px solid #eee;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 2.2rem;
+        transition: box-shadow .3s;
+    }
+    .vendor-name {
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        transition: color .3s;
+        &:hover {
+            color: $primary-color;
+        }
+    }
+    &:hover {
+        .brand {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+    }
+}
+
+// Store Grid
+.store-grid {
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+    .store-banner img {
+        min-height: 19.4rem;
+    }
+    .store-content {
+        top: 2.5rem;
+        #{$left}: 3rem;
+        max-width: 19.2rem;
+    }
+    .seller-brand {
+        #{$right}: 1.9rem;
+        top: -58%;
+    }
+    &:hover {
+        .seller-brand img {
+            transform: translateY(-1rem);
+        }
+    }
+    .store-title:hover {
+        color: $primary-color;
+    }
+}
+
+// Store List
+.store-list {
+    display: flex;
+    border: 1px solid $border-color;
+    .store-header {
+        flex: 0 0 40rem;
+        max-width: 40rem;
+        a {
+            display: block;
+            height: 100%;   
+        }
+    }
+    .store-banner {
+        height: 100%;
+    }
+    .store-content {
+        position: relative;
+    }
+    .featured-label {
+        position: absolute;
+        top: 1.5rem;
+        #{$left}: 1.5rem;
+        margin-#{$left}: 0;
+    }
+    .store-content {
+        display: flex;
+        align-items: center;
+        padding: side-values(2rem 2rem 2rem 6rem);
+    }
+    .store-title {
+        color: $dark-color;
+        a {
+            text-shadow: none;
+        }
+    }
+    .ratings-container {
+        margin-bottom: 0.3rem;
+    }
+    .store-address {
+        color: $body-color;
+        opacity: 1;
+        margin-bottom: 0.9rem;
+    }
+    .seller-brand {
+        top: 50%;
+        #{$left}: 0;
+        transform: translate(if-ltr(-50%,50%), -50%);
+    }
+    &:hover {
+        .seller-brand img {
+            transform: translateX(if-ltr(-1rem,1rem));
+        }
+    }
+    
+}
+
+.store-grid, 
+.store-list {
+    .seller-brand {
+        position: absolute;
+        img {
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            max-width: calc(100% + 2px);
+            margin: -1px;
+            box-shadow: 0px 0px 0px 1px #eee;
+        }
+    }
+}
+
+// Store Banner
+.store.store-banner {
+    .store-media img {
+        min-height: 44rem;
+        width: 100%;
+    }
+    .store-content {
+        top: 0;
+        #{$left}: 0;
+        max-width: 34.5rem;
+        padding: side-values(5rem 4rem 5rem 5rem);
+        background-color: rgba(37,38,42,0.9);
+        height: 100%;
+    }
+    .seller-brand {
+        margin-bottom: 2.3rem;
+    }
+    .store-title {
+        margin-bottom: 1.6rem;
+        font-size: 2rem;
+        letter-spacing: -.025em;
+    }
+    
+    .social-icon {
+        margin-#{$right}: .5rem;
+        color: #fff;
+        border-color: #ccc;
+        opacity: .8;
+    }
+}
+
+// Store WCMP
+.store-wcmp {
+    .store-content {
+        #{$left}: 0;
+        #{$right}: 0;
+        bottom: 0;
+        height: 50%;
+        background-color: rgba(34,34,40,0.85);
+        display: flex;
+        padding: 2rem;
+    }
+    .seller-brand {
+        flex: 0 0 8rem;
+        max-width: 8rem;
+        margin-#{$right}: 2.2rem;
+    }
+    .seller-date {
+        flex: 0 0 calc(100% - 10rem);
+        max-width: calc(100% - 10rem);
+    }
+    .store-title {
+        margin: .4rem 0 1.1rem;
+        a {
+            font-size: 1.8rem;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .seller-info-list {
+        margin: 0;
+        li {
+            display: flex;
+            margin-bottom: 0;
+            letter-spacing: 0;
+            opacity: 0.7;
+            p {
+                margin-bottom: 0;
+                line-height: 2;
+            }
+        }
+        .store-address p {
+            @include text-block();
+        }
+        .store-rating p {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        i {
+            margin-top: 1.3rem;
+            margin-#{$right}: 0.8rem;
+            font-size: 1.4rem;
+        }
+    }
+    .ratings-container {
+        margin-top: .5rem;
+        margin-bottom: 0;
+    }
+}
+
+// Store WCMP Banner
+.store-wcmp-banner {
+    .store-media img {
+        width: 100%;
+    }
+    .store-content {
+        #{$left}: 0;
+        #{$right}: 0;
+        bottom: 0;
+        min-height: 40%;
+        padding: 2rem;
+        background: rgba(0,0,0,0.6);
+    }
+    .seller-brand {
+        margin: -7rem auto 2rem auto;
+    }
+    .social-icons {
+        position: absolute;
+        #{$right}: 2rem;
+        top: -5rem;
+    }
+    .store-title {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        justify-content: center;
+    }
+    .seller-info-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-#{$left}: 0;
+        > * {
+            margin: 0 .6rem;
+            opacity: .6;
+            text-align: center;
+            i {
+                margin-#{$right}: .4rem;
+                margin-#{$left}: 0;
+            }
+        }
+    }
+}
+
+.store-wcmp-banner, 
+.store-wcfm-banner {
+    .seller-brand {
+        width: 10rem;
+        height: 10rem;
+        img {
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            max-width: calc(100% + 2px);
+            margin: -1px;
+        }
+    }
+    .social-icon:not(:last-child) {
+        margin-#{$right}: .5rem;
+    }
+    .social-icon {
+        border-radius: .3rem;
+    }
+}
+
+// Store WCFM Banner
+.store-wcfm-banner {
+    .store-content {
+        #{$left}: 0;
+        bottom: 0;
+        width: 100%;
+        background: rgba(34,34,34,0.8);
+        display: flex;
+        align-items: center;
+        min-height: 16rem;
+        padding: 2.3rem 3rem 2.6rem;
+    }
+    .store-content-left {
+        display: flex;
+    }
+    .personal-info {
+        margin-#{$right}: 4rem;
+    }
+    .seller-brand {
+        margin: -7.2rem 0 2rem;
+    }
+    .ratings-container {
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+    .ratings-full {
+        margin: 0;
+    }
+    .store-title {
+        margin-bottom: .9rem;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    .seller-info-list {
+        padding-#{$left}: 2.4rem;
+        li {
+            margin-bottom: .4rem;
+            letter-spacing: 0;
+            i {
+                margin: side-values(0 .4rem 0 -2.4rem);
+                font-size: 1.4rem;
+            }
+        }
+    }
+    .store-content-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .btn-inquiry {
+        margin-bottom: 3rem;
+    }
+}
+
+.btn-inquiry, 
+.btn-visit:not(.btn-link) {
+    padding: 0.8em 1.6em;
+    font-size: 1.3rem;
+    background-color: $border-color;
+    border-color: $border-color;
+    color: $dark-color;
+    margin-#{$right}: .6rem;
+    &:hover, &:active, &:focus {
+        background-color: $dark-color;
+        border-color: $dark-color;
+        color: #fff;
+    }
+}
+// Toolbox
+.vendor-toolbox {
+    .vendor-search-toggle {
+        margin-#{$right}: 1.5rem;
+        padding: 0.73em 0.9em .86em;
+        font-weight: 700;
+        i {
+            margin: side-values(0 .8rem 0 0);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    }
+    .toolbox-left label {
+        font-weight: 400;
+        color: $dark-color;
+    }
+    .toolbox-layout {
+        margin-#{$left}: 1.5rem;
+    }
+    .btn-layout {
+        color: #ccc;
+        &.icon-mode-list i {
+            font-size: 2rem;
+        }
+    }
+}
+
+// Search Form
+.vendor-search-wrapper {
+    display: none;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+    margin-top: 3.2rem;
+    .vendor-search-form {
+        display: flex;
+    }
+    input {
+        min-height: 3.8rem;
+        height: 3.8rem;
+        color: #777;
+        border-radius: .3rem;
+        &:focus {
+            border-color: #8080809e;
+        }
+    }
+    .btn {
+        padding: 0.7em 1.65em;
+    }
+}
+
+// Vendor Product Title 
+.vendor-product-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 1.9rem 1.5rem;
+    border: 1px solid $border-color;
+    border-radius: .3rem;
+    a {
+        color: $dark-color;
+        &:hover {
+            color: $primary-color;
+        }
+    }
+}
+
+// Vendor Map
+.vendor-map {
+    border: 1px solid $border-color;
+}
+
+.google-map {
+    height: 35rem;
+    background-color: #98c3e5;
+}
+
+@include mq(lg, max) {
+    .store-wcmp {
+        height: 100%;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        .store-content {
+            display: block;
+            position: relative;
+            background: #fff;
+        }
+        .seller-brand {
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            img {
+                width: calc(100% + 2px);
+                height: calc(100% + 2px);
+                max-width: calc(100% + 2px);
+                margin: -1px;
+                border: 1px solid #eee;
+            }
+        }
+        .seller-date {
+            flex: auto;
+            max-width: 100%;
+        }
+        .store-title a {
+            color: $primary-color;
+            text-shadow: none;
+        }
+        .store-address, .store-rating {
+            color: $dark-color;
+        }
+    }
+
+    .store-wcfm-banner {
+        .store-content {
+            display: block;
+        }
+        .store-content-right {
+            align-items: flex-start;
+            margin: side-values(1rem 0 0 14rem);
+            .btn {
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+}
+
+@include mq(md, max) {
+    .toolbox.vendor-toolbox {
+        display: block;
+    }
+    .store-list {
+        .store-header {
+            flex: 0 0 30rem;
+            max-width: 30rem;
+        }
+    }
+    .store.store-banner .store-content {
+        background: none;
+        padding-#{$left}: 2rem;
+        padding-#{$right}: 2rem;
+        max-width: 27rem;
+    }
+    .store-wcmp-banner .social-icons {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: auto;
+        #{$right}: auto;
+        margin-top: 1rem;
+    }
+}
+
+@include mq(sm, max) {
+    .store-list {
+        display: block;
+        .store-header {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        .store-content {
+            padding-#{$left}: 2rem;
+        }
+        .seller-brand {
+            #{$left}: auto;
+            transform: none;
+            #{$right}: 2rem;
+            top: -27%;
+        }
+    }
+    .store-wcfm-banner {
+        .store-content-left {
+            display: block;
+            text-align: center;
+        }
+        .personal-info {
+            margin-#{$right}: 0;
+        }
+        .seller-brand {
+            margin-#{$right}: auto;
+            margin-#{$left}: auto;
+        }
+        .store-title {
+            justify-content: center;
+        }
+        .store-content-right {
+            align-items: center;
+            margin-#{$left}: 0;
+        }
+    }
+}
+
+@include mq(xs, max) {
+    .store-list {
+        .seller-brand {
+            top: -22%;
+            width: 7rem;
+            height: 7rem;
+        }
+    }
+}

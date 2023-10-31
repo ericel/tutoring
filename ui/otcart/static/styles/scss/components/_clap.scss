@@ -1,0 +1,62 @@
+
+.button-wrapper{
+    position: sticky;
+     bottom: 16px;
+    z-index: 99;
+    width: 100%;
+    transition: opacity 300ms ease 0s;
+    display: flex;
+    
+    justify-content: center;
+    .clap-holder{
+        height: 45px;
+        display: flex;
+        align-items: center;
+        border-radius: 50rem;
+        background-color: rgba(255, 255, 255, 1);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px 0px;
+        transform: translateY(0px);
+        padding: 0px 14px 0px 16px;
+        border-radius: 20px;
+        .w-icon-comment {
+            cursor:pointer;
+            margin-right: 1rem;
+            font-weight: 100 !important;
+            color: #595959;
+        }
+        .divider{
+            height: 12px;
+            margin: 0px 16px;
+            border-right: 1px solid rgb(230, 230, 230);
+        }
+        
+        .clap-btn {
+          display: inline-block;
+          Cursor: pointer;
+          width: 50px;
+          height: 40px;
+    
+            background: url('../../images/icons/claps.png') no-repeat 0% 50%;
+            background-size: 900%;
+           }
+           .clap-active {
+            animation-name: animate;
+            animation-duration: .8s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+          }
+    }
+    .clap-holder a {
+        color: #000;
+    }
+    }
+
+
+.clap-active {
+   animation-timing-function: steps(8);
+}
+@keyframes animate {
+  0%   { background-position: left;  }
+  50%  { background-position: right; }
+  100% { background-position: right; }
+}

@@ -1,0 +1,117 @@
+/*----------------------------------------
+    Typography
+-----------------------------------------*/
+
+@include set-default (
+	(
+		base: (
+			list-circle: (
+				icon: (
+					font-size: 1.1rem
+				)
+			)
+		)
+	)
+);
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	font-weight: 400;
+	margin: 0 0 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-family;
+	font-weight: 700;
+	line-height: 1.2;
+	color: $dark-color;
+	letter-spacing: 0;
+}
+
+h1 {
+	font-size: 4rem;
+}
+h2 {
+	font-size: 3rem;
+}
+h3 {
+	font-size: 2.4rem;
+}
+h4 {
+	font-size: 1.8rem;
+}
+h5 {
+	font-size: 1.5rem;
+}
+h6 {
+	font-size: 1.3rem;
+}
+p {
+	font-size: 1.4rem;
+	line-height: 1.86;
+}
+
+.typo-grid {
+	margin-bottom: 4.7rem;
+}
+
+blockquote {
+	margin: 0;  
+}
+.list-style-none {
+	list-style: none;
+}
+.list-type-check {
+	li {
+		position: relative;
+		padding-#{$left}: 2rem;
+		line-height: 2;
+		&::before {
+			position: absolute;
+			display: block;
+			#{$left}: 0;
+			top: 1px;
+			content: '\e969';
+			font: {
+				family: 'font awesome 6 free';
+				weight: 600;
+				size: 1.3rem;
+			}
+		}
+	}
+}
+.list-circle {
+	li {
+		padding-#{$left}: 1rem;
+		margin-bottom: 1rem;
+	}
+	i {
+		margin-#{$right}: 1.2rem;
+		width: 4rem;
+		height: 4rem;
+		border: 1px solid #e1e1e1;
+		border-radius: 50%;
+		text-align: center;
+		line-height: 3.8rem;
+		@include print_css(base, list-circle, icon);
+	}
+}
+// @include mq('md') {
+// 	.typo-grid {
+// 		&.row [class*='col-'] {
+// 			p {
+// 				padding-right: 1rem;
+// 			}
+// 		}
+// 	}
+// }

@@ -1,0 +1,48 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Django Firebase Authentication</title>
+    <!-- Add any additional CSS or JavaScript files here -->
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+</head>
+<body class="{% if request.user.is_authenticated == False %}anonymous{% endif %}">
+    <!-- Add your HTML content here -->
+    <main>
+        <h1>Welcome to firebase Django Authentication</h1>
+        <div class="alert-notify"></div>
+        {% csrf_token%}
+        {% if not request.user.is_authenticated %}
+        <div class="login-box">
+            <h2>Social Login Button</h2>
+            {% comment %} <div id="g_id_signin"></div>  {% endcomment %}
+            <a href="#" class="social-button facebookLogin" id="facebook-connect"> <span>Connect with Facebook</span></a>
+            <a href="#" class="social-button googleLogin" id="google-connect"> <span>Connect with Google</span></a>
+            <a href="#" class="social-button twitterLogin" id="twitter-connect"> <span>Connect with Twitter</span></a>
+            <a href="#" class="social-button" id="linkedin-connect"> <span>Connect with LinkedIn</span></a>
+        </div>
+        {% else %}
+        <div class="login-box">
+            <h1>Username: <i>{{request.user.username}}</i></h1>
+            <h1>Last login: <i>{{request.user.last_login}}</i></h1>
+            <a href="#" class="logoutbtn" id="login">Log out now</a>
+        </div>
+        {% endif %}
+    </main>
+    <!-- End of HTML content -->
+    <!-- Add any additional JavaScript code here -->
+     <!-- Plugin JS File -->
+      <!--JQUERY 3.6.3-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     
+    <script defer src="https://accounts.google.com/gsi/client"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.19.1/firebase-app-compat.min.js" integrity="sha512-iWu05bgO8XaXi8jb4kWdAU0n7beCIe61Kz4K6XFxdctw4W+0Ro/OeY0dh6BF2TeXfX3ABqKMa3a5FKQTmLhwHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.19.1/firebase-auth-compat.min.js" integrity="sha512-qRIXEs//Nhd/La6AkvidtnaGmzusT6kgwmg9sTeBmOEAYUUWsbzrwAm1H/8CrNNVPdRX72rb1GmGGbGCRMxh2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+/*-------------------------------------------
+    Progress Bar
+        - Rounded
+--------------------------------------------*/
+
+// Progress Bar
+.progress-bar {     
+    background-color: #eee;
+    margin-bottom: 1rem;
+    height: 1rem;
+    width: 100%;
+    span {
+        display: block;
+        height: 100%;
+        background-color: #999;     
+    }
+    &.rounded {
+        border-radius: .8rem;
+        span {
+            border-radius: .8rem;
+        }
+    }
+    &.progress-bar-sm {
+        height: .8rem;
+    }
+}
+.progress-value {
+    mark {
+        background: transparent;
+    }
+}

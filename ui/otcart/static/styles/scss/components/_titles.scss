@@ -1,0 +1,392 @@
+/*----------------------------
+    Titles
+        - Default
+        - Simple
+            - Link icon
+            - Tab boxed
+            - Tab link
+        - Center
+-----------------------------*/
+
+// Variables
+@include set-default(
+    (
+        base: ( 
+            title: (
+                margin-bottom: 1.7rem,
+                font-size: 2rem,
+                font-weight: 700,
+                line-height: 1.2,
+                // letter-spacing: 0,
+                //color: #333333,
+                border: (
+                    color: #eeeeee,
+                    _width: 2px,
+                    _active-color: $primary-color,
+                    line-height: 2.8
+                ),
+                desc: (
+                    font-size: 1.3rem,
+                    font-family: false,
+                    font-weight: false,
+                    color: #666,
+                    line-height: 2,
+                    letter-spacing: 0
+                ),
+                underline: (
+                    _line-color: #eee
+                )
+            ),
+            title-link: (
+                margin-bottom: 1.3rem,
+                _wrap-line: #eee,
+                title: (
+                    margin-bottom: .8rem,
+                    padding: .8rem 0
+                ),
+                link: (
+                    margin-bottom: .7rem,
+                    margin-#{$left}: auto,
+                    text-transform: capitalize
+                ),
+                icon: (
+                    margin-#{$left}: 0.5rem,
+                    font-size: 1.35rem
+                )
+            ),
+            title-tab: (
+                _item-gap: 2rem,
+                nav-link: (
+                    font-size: 1.3rem,
+                    font-weight: 400,
+                    letter-spacing: 0,
+                    color: #333,
+                    text-transform: capitalize,
+                    padding: 0
+                ),
+                tab-nav-box: (
+                    padding: .3rem 0,
+                    nav-link: (
+                        padding: 0.85em 1.42em,
+                        font-weight: 600,
+                        text-transform: uppercase,
+                        _border-color: #ccc
+                    )
+                ),
+                tab-nav-link: (
+                    padding: 1.6rem 2rem .6rem,
+                    background: #f5f5f5,
+                )
+            )
+        )
+    )
+);
+
+/*  Default */ 
+.title {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    @include print_css( base, title );
+    &.title-link::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 3px;
+        #{$left}: 0;
+        bottom: -.8rem;
+        background-color: $primary-color;
+        z-index: 1;
+    }
+    
+    // Title-Small
+    &.title-sm {
+        font-size: 1.6rem;
+    }
+
+    // Title Medium
+    &.title-md {
+        font-size: 2rem;
+    }
+
+    // Title Large
+    &.title-lg {
+        font-size: 3rem;
+    }
+}
+
+// // Line
+// .title-line {
+//     &::before {
+//         content: none;
+//     }
+// }
+
+/* Simple */
+// Title Underline
+.title-underline {
+    position: relative;
+    padding-bottom: 1.6rem;
+    &::before {
+        content: none;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        #{$left}: 0;
+        bottom: 0;
+        margin-#{$left}: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #{ get(base, title, underline, _line-color) };
+    }
+}
+
+// Title Cross
+.title-cross {
+    &::before,
+    &::after {
+        flex: 1;
+        content: '';
+        @include css( height, base, title, border, _width );
+        @include css( background-color, base, title, border, color );
+    }
+
+    &::before {
+        margin-#{$right}: 3rem;
+    }
+
+    &::after {
+        margin-#{$left}: 3rem;
+    }
+}
+
+@include mq('xs', 'max') {
+    .title-cross {
+        &::before {
+            margin-#{$right}: 1.5rem;
+        }
+        &::after {
+            margin-#{$left}: 1.5rem;
+        }
+    }
+}
+
+// Title Link icon
+.title-link-wrapper {
+    display: flex;
+    position: relative;
+    align-items: center;
+    @include css( margin-bottom, base, title-link, margin-bottom );
+    .title {
+        position: relative;
+        @include print_css( base, title-link, title );
+    }
+    a {
+        @include print_css( base, title-link, link );
+        &:hover {
+            color: $primary-color;
+        }
+        i {
+            vertical-align: middle;
+            @include print_css( base, title-link, icon );
+        }
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        #{$left}: 0;
+        bottom: 0;
+        width: 100%;
+        border-bottom: 1px solid #{ get( base, title-link, _wrap-line )};
+    }
+    &.no-link {
+        .title-link {
+            margin-bottom: .8rem;
+        }
+    }
+}
+
+// Tab 
+.tab-with-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .nav-tabs {
+        border-bottom: 0;
+    }
+    .nav-item:not(:last-child) {
+        @include css( margin-#{$right}, base, title-tab, _item-gap );  
+    }
+    .nav-link {
+        @include print_css( base, title-tab, nav-link );
+    }
+    // tab boxed
+    &.tab-nav-boxed {
+        @include print_css( base, title-tab, tab-nav-box );
+        .title {
+            margin-bottom: 0;
+            margin-#{$right}: 2rem;
+        }
+        .nav-item {
+            &:not(:last-child) {
+                margin-#{$right}: 1rem;
+            }
+            &:last-child {
+                margin: 0;
+            }
+        }
+        .nav-link {
+            border: 1px solid #{ get( base, title-tab, tab-nav-box, nav-link, _border-color )};
+            border-radius: .3rem;
+            @include print_css( base, title-tab, tab-nav-box, nav-link );
+            &.active,
+            &:hover {
+                border-color: $primary-color;
+            }
+        }
+    }
+    // tab link
+    &.tab-nav-link {
+        @include print_css( base, title-tab, tab-nav-link );
+        .title, .nav-link {
+            margin-bottom: 1rem;
+        }
+        .title {
+            margin-#{$right}: 2rem;
+        }
+    }
+    &.tab-nav-underline {
+        .nav-link::after {
+            bottom: -1px;
+        }
+    }
+    .nav-item.show .nav-link,
+    .nav-item .nav-link.active,
+    .nav-item:hover .nav-link {
+        color: $primary-color;
+    }   
+}
+
+// Title Separator
+.title-separator {
+    margin: 0 .5rem;
+}
+
+/* Center */
+.title-center {
+    justify-content: center;
+}
+
+.tab-with-title.tab-nav-center {
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+    .nav-tabs {
+        margin: 0;
+    }
+    .nav-item {
+        margin: 0 1rem;
+    }
+    .nav-link {
+        padding: .8rem 0;
+        &::after {
+            bottom: 0;
+            height: .3rem;
+            border: none;
+            background-color: $primary-color;
+        }
+    }
+}
+
+// Title Filter
+.filter-with-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    .title {
+        margin-bottom: .5rem;
+    }
+}
+
+// Title Section
+.title-section {
+    p {
+        @include print_css( base, title, desc );
+    }
+}
+
+// .title-simple {
+//     margin-bottom: 1rem;
+//     padding-bottom: 1.5rem;
+//     border-bottom: 1px solid $border-color;
+//     &::before,
+//     &::after {
+//         content: none;
+//     }
+// }
+
+// @include mq('lg') {
+//     .heading-flex {
+//         flex-direction: row;
+//         align-items: center;
+//         text-align: left;
+//     }
+// }
+@include mq(lg, max) {
+    .tab-with-title {
+        flex-direction: column;
+        .nav-tabs {
+            justify-content: center;
+        }
+        &.tab-nav-boxed {
+            .title {
+                margin-bottom: 1rem;
+                margin-#{$right}: 0;
+            }
+            .nav-item {
+                margin-#{$left}: .5rem !important;
+                margin-#{$right}: .5rem !important;
+            }
+            .nav-link {
+                margin-bottom: .5rem;
+            }
+        }
+        &.tab-nav-link {
+            .nav-item {
+                margin: 0 1rem !important;
+            }
+            .title {
+                margin-#{$right}: 0;
+            }
+        }
+    }
+    .filter-with-title {
+        flex-direction: column;
+        .title {
+            margin-bottom: 1rem;
+        }   
+        .nav-filters {
+            justify-content: center;
+            li {
+                margin: 0 1.5rem;
+            }
+        }
+    }
+}
+
+@include mq(sm, max) {
+    .title-link-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        .title-link {
+            margin-bottom: 2rem;
+        }
+        a {
+            margin-#{$left}: 0;
+        }
+    }
+}

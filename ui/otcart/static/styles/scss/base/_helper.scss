@@ -1,0 +1,332 @@
+/*----------------------------------------
+    Helper Class
+-----------------------------------------*/
+
+// Text Transform
+.text-uppercase {
+    text-transform: uppercase !important;
+}
+.text-capitalize {
+    text-transform: capitalize !important;
+}
+.text-normal {
+    text-transform: none !important;
+}
+// Dispaly
+.d-none {
+    display: none !important;
+}
+.d-block {
+    display: block !important;
+}
+.d-inline-block {
+    display: inline-block !important;
+}
+.d-flex {
+    display: flex !important;
+}
+.d-inline-flex {
+    display: inline-flex !important;
+}
+.justify-content-center {
+    justify-content: center !important;
+}
+.justify-content-start {
+    justify-content: flex-start !important;
+}
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+.justify-content-between {
+    justify-content: space-between !important;
+}
+.align-items-start {
+    align-items: flex-start !important;
+}
+.align-items-end {
+    align-items: flex-end !important;
+}
+.align-items-center {
+    align-items: center !important;
+}
+.flex-column {
+    flex-direction: column !important;
+}
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+.flex-1 {
+    flex: 1 !important;
+}
+
+// Width
+.w-100 {
+    width: 100% !important;
+}
+// Height
+.h-100 {
+    height: 100% !important;
+}
+// Position
+.p-sticky {
+    position: sticky !important;
+}
+.p-relative {
+    position: relative !important;
+}
+.x-50 {
+    #{$left}: 50% !important;
+    transform: translateX(if-ltr(-50%,50%)) !important;
+    &.y-50 {
+        transform: translate( if-ltr(-50%,50%), -50% ) !important;
+    }
+}
+.y-50 {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+@include mq(lg) {
+    .d-lg-none {
+        display: none !important;
+    }
+    .d-lg-block {
+        display: block !important;
+    }
+    .d-lg-flex {
+        display: flex !important;
+    }
+    .d-lg-inline-flex {
+        display: inline-flex !important;
+    }
+}
+@include mq(md) {
+    .d-md-none {
+        display: none !important;
+    }
+    .d-md-block {
+        display: block !important;
+    }
+    .d-md-flex {
+        display: flex !important;
+    }
+    .d-md-inline-flex {
+        display: inline-flex !important;
+    }
+}
+@include mq(xl, max) {
+    .d-xl-show {
+        display: none !important;
+    }
+}
+@include mq(lg, max) {
+    .d-lg-show {
+        display: none !important;
+    }
+}
+@include mq(md, max) {
+    .d-md-show {
+        display: none !important;
+    }
+}
+@include mq(sm, max) {
+    .d-sm-show {
+        display: none !important;
+    }
+}
+@include mq(xs, max) {
+    .d-xs-none {
+        display: block !important;
+    }
+    .d-xs-show {
+        display: none !important;
+    }
+    .d-xs-block {
+        display: block !important;
+    }
+    .d-xs-inline-block {
+        display: inline-block !important;
+    }
+}
+
+// Font-weight
+.font-weight-bold {
+    font-weight: 600 !important;
+}
+.font-weight-bolder {
+    font-weight: 700 !important;
+}
+.font-weight-normal {
+    font-weight: 400 !important;
+}
+
+// Font size
+.font-size-md {
+    font-size: 1.3rem !important;
+}
+.font-size-sm {
+    font-size: 1.2rem !important;
+}
+.font-size-normal {
+    font-size: 1.4rem !important;
+}
+.font-size-lg {
+    font-size: 2.2rem !important;
+}
+.font-size-xl {
+    font-size: 2.4rem !important;
+}
+
+// Font Family
+.font-primary {
+    font-family: $font-family !important;
+}
+.font-secondary {
+    font-family: $second-font-family !important;
+}
+
+
+// Text Align
+.text-left {
+    text-align: #{$left} !important;
+}
+.text-center {
+    text-align: center !important;
+}
+.text-right {
+    text-align: #{$right} !important;
+}
+
+// Text Color
+.text-white {
+    color: #fff !important;
+}
+.text-light {
+    color: #999 !important;
+}
+.text-lighter {
+    color: #ccc !important;
+}
+.text-primary {
+    color: $primary-color !important;
+}
+.text-secondary {
+    color: $secondary-color !important;
+}
+.text-dark {
+    color: $dark-color !important;
+}
+.text-default {
+    color: $body-color !important;
+}
+.text-hover-underline {
+    &::after {
+        display: block;
+        margin-top: 1px;
+        margin-#{$left}: auto;
+        margin-#{$right}: auto;
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px solid;
+        transform: scaleX(0);
+        transition: transform .3s;
+        content: '';
+    }
+    &:hover {
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+}
+
+// Letter Spacing
+.ls-25 {
+    letter-spacing: -.025em !important;
+}
+.ls-15 {
+    letter-spacing: -.015em !important;
+}
+.ls-10 {
+    letter-spacing: -.01em !important;
+}
+.ls-50 {
+    letter-spacing: -.05em !important;
+}
+.ls-normal {
+    letter-spacing: 0 !important;
+}
+
+// Background Color
+.bg-white {
+    background-color: $white-color !important;
+}
+.bg-dark {
+    background-color: $dark-color !important;
+}
+.bg-primary {
+    background-color: $primary-color !important;
+}
+.bg-secondary {
+    background-color: $secondary-color !important
+}
+.bg-grey {
+    background-color: $grey-color-light !important;
+}
+.bg-image {
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+// Border Radius
+.br-lg {
+    border-radius: 1.3rem !important;
+    overflow:  hidden !important;
+}
+.br-sm {
+    border-radius: .5rem !important;
+    overflow:  hidden !important;
+}
+.br-xs {
+    border-radius: .3rem !important;
+    overflow:  hidden !important;
+}
+.br-50 {
+    border-radius: 50% !important;
+    overflow:  hidden !important;
+}
+
+// Border
+.border-no {
+    border: none !important;
+}
+.bb-no {
+    border-bottom: none !important;
+}
+.bt-no {
+    border-top: none !important;
+}
+
+// line height
+.lh-1 {
+    line-height: 1 !important;
+}
+.lh-2 {
+    line-height: 2 !important;
+}
+.order-reverse {
+    order: -1 !important;
+}
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
+.after-none{
+    &::after{
+        display: none !important;
+    }
+}
+.before-none{
+    &::before{
+        display: none !important;
+    }
+}

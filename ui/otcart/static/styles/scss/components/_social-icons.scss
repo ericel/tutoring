@@ -1,0 +1,226 @@
+/*-------------------------------
+    Social Links
+        - Default Style
+        - Other Styles
+            - No Border
+            - Inline Style
+--------------------------------*/
+
+// Default Style
+.social-icons {
+    display: inline-flex;   
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.social-icon {
+    font-size: 1.4rem;
+    width: 32px;
+    height: 32px;
+    margin: side-values(2px 10px 2px 0);
+    line-height: 28px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    color: inherit;
+    transition: color .4s, border .4s, background-color .4s;
+    text-align: center;
+    .border-thin & {
+        border-width: 1px;
+        line-height: 3rem;
+    }
+    &:last-child {
+        margin-#{$right}: 0;
+    }
+
+    &.social-facebook {
+        color: $social-facebook;
+    }
+
+    &.social-twitter {
+        color: $social-twitter;
+    }
+
+    &.social-instagram {
+        color: $social-instagram;
+    }
+
+    &.social-youtube {
+        color: $social-youtube;
+    }
+
+    &.social-pinterest {
+        color: $social-pinterest;
+    }
+    &.social-google {
+        color: $social-google;
+    }
+    &.social-linkedin {
+        color: $social-linkedin;
+    }
+    &.social-email {
+        color: $social-email;
+    }
+    &.social-whatsapp {
+        color: $social-whatsapp;
+    }
+}
+
+.social-icons-colored {
+    .social-icon {
+        color: #fff;
+        &.social-facebook {
+            border-color: $social-facebook;
+            background-color: $social-facebook;
+        }
+        &.social-twitter {
+            border-color: $social-twitter;
+            background-color: $social-twitter;
+        }
+        &.social-instagram {
+            border-color: $social-instagram;
+            background-color: $social-instagram;
+        }
+        &.social-youtube {
+            border-color: $social-youtube;
+            background-color: $social-youtube;
+        }
+        &.social-pinterest {
+            border-color: $social-pinterest;
+            background-color: $social-pinterest;
+        }
+        &.social-google {
+            border-color: $social-google;
+            background-color: $social-google;
+        }
+        &.social-linkedin {
+            border-color: $social-linkedin;
+            background-color: $social-linkedin;
+        }
+        &.social-email {
+            border-color: $social-email;
+            background-color: $social-email
+        }
+        &.social-whatsapp {
+            border-color: $social-whatsapp;
+            background-color: $social-whatsapp;
+        }
+    }
+}
+.social-no-color {
+    .social-icon {
+        border-color: #cdcdcd;
+        color: #666;
+        &:hover, &:focus {
+            color: #fff;
+            &.social-facebook {
+                background-color: $social-facebook;
+                border-color: $social-facebook;
+            }
+            &.social-twitter {
+                background-color: $social-twitter;
+                border-color: $social-twitter;
+            }
+            &.social-instagram {
+                background-color: $social-instagram;
+                border-color: $social-instagram;
+            }
+            &.social-youtube {
+                background-color: $social-youtube;
+                border-color: $social-youtube;
+            }
+            &.social-pinterest {
+                background-color: $social-pinterest;
+                border-color: $social-pinterest;
+            }
+            &.social-google {
+                border-color: $social-google;
+                background-color: $social-google;
+            }
+            &.social-linkedin {
+                border-color: $social-linkedin;
+                background-color: $social-linkedin;
+            }
+            &.social-email {
+                border-color: $social-email;
+                background-color: $social-email
+            }
+            &.social-whatsapp {
+                border-color: $social-whatsapp;
+                background-color: $social-whatsapp;
+            }
+        }
+    }
+}
+
+.social-icon-border-color {
+    .social-icon {
+        background-color: #fff;
+        border-width: 1px;
+        &.social-facebook {
+            color: $social-facebook;
+            border-color: $social-facebook;
+        }
+        &.social-twitter {
+            color: $social-twitter;
+            border-color: $social-twitter;
+        }
+        &.social-instagram {
+            color: $social-instagram;
+            border-color: $social-instagram;
+        }
+        &.social-youtube {
+            color: $social-youtube;
+            border-color: $social-youtube;
+        }
+        &.social-pinterest {
+            color: $social-pinterest;
+            border-color: $social-pinterest;
+        }
+        &.social-google {
+            border-color: $social-google;
+            color: $social-google;
+        }
+        &.social-linkedin {
+            border-color: $social-linkedin;
+            color: $social-linkedin;
+        }
+        &.social-email {
+            border-color: $social-email;
+            color: $social-email
+        }
+        &.social-whatsapp {
+            border-color: $social-whatsapp;
+            color: $social-whatsapp;
+        }
+        &:hover {
+            color: #fff;
+            &.social-facebook {
+                background-color: $social-facebook;
+            }
+            &.social-twitter {
+                background-color: $social-twitter;
+            }
+            &.social-instagram {
+                background-color: $social-instagram;
+            }
+            &.social-youtube {
+                background-color: $social-youtube;
+            }
+            &.social-pinterest {
+                background-color: $social-pinterest;
+            }
+            &.social-google {
+                background-color: $social-google;
+            }
+            &.social-linkedin {
+                background-color: $social-linkedin;
+            }
+            &.social-email {
+                background-color: $social-email
+            }
+            &.social-whatsapp {
+                background-color: $social-whatsapp;
+            }
+        }
+    }
+}

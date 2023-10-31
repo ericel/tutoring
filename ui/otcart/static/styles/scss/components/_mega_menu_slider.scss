@@ -1,0 +1,43 @@
+.ul-categories {
+    position: relative;
+    
+    .li-select{
+        position: relative;
+        border-bottom: 1px solid #f5f5f5;
+        font-size: 1.8rem;
+        cursor: pointer;
+        small {
+            font-weight: 300;
+          }
+        //width: 100%;
+        .submenu-categories {
+            display: none;
+            position: absolute;
+            top: 0px;
+            left: -20px;
+        }
+    }
+    .li-select:first-child {
+        border-top: 1px solid #f5f5f5;
+    }
+}
+.no-border-bottom {
+    border-bottom: 0px !important;
+}
+.breadcrumb-li {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $secondary-color;
+}
+.mega-menu-crumb-list ul, .mega-menu-crumb-list ul li, .mega-menu-crumb-list button {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    
+}
+.mega-menu-crumb-list button {
+    display: none;
+    height: 24px;
+    width: 24px;
+    margin-left: 1rem !important;
+}

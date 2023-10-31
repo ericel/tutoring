@@ -1,0 +1,75 @@
+/*---------------------------
+    Breadcrumb
+--------------------------*/
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #eeeeee;
+    color: #333;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    padding: 1.5rem .2rem 1.6rem;
+    a {
+        color: inherit;
+    }
+
+    li:not(:last-child) {
+        padding-#{$right}: .4rem;
+        transition: opacity .3s;
+        opacity: .8;
+        &::after {
+            content: '\f054';
+            position: relative;
+            display: inline-block;
+            margin-#{$left}: .5rem;
+            font-size: 1rem;
+            font-weight:900;
+            font-family: 'Font Awesome 6 Free';
+        }
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    li:last-child {
+        color: #333333;
+    }
+}
+
+.breadcrumb.shop-breadcrumb {
+    padding: 3rem 0;
+    margin: 2.5rem 0 2.3rem;
+    justify-content: center;
+    li {
+        padding-#{$left}: .5rem;
+        padding-#{$right}: .5rem;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -.025em;
+        opacity: 1;
+        color: $body-color;
+        &.active {
+            color: $primary-color;
+        }
+        &.passed {
+            color: #333;
+        }
+        &:not(:last-child) {
+            &::after {    
+                margin-#{$left}: 1rem;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #999;
+                bottom: 3px;
+                line-height: 1;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+}

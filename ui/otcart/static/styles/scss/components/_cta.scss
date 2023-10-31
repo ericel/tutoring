@@ -1,0 +1,390 @@
+/*-------------------------
+    - Expanded Newsletter
+    - Banner Newsletter
+    - Link Banner Newsletter
+    - Sale Banner
+-------------------------*/
+
+// Expanded Newsletter
+.expanded-newsletter {
+    padding: 2.6rem 4rem .5rem;
+    border: 2px solid $border-color;
+    .icon-box-side {
+        justify-content: #{$left};
+        .icon-box-icon {
+            margin-#{$right}: 2rem;
+            color: $primary-color;
+            i {
+                font-size: 4.8rem;
+            }
+        }
+        .icon-box-title {
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+        p {
+            font-size: 1.4rem;
+            letter-spacing: -.007em;
+        }
+    }
+    .input-wrapper-inline .form-control {
+        min-height: 4.8rem;
+        border-color: #ccc;
+        border-radius: 2.5rem 0 0 2.5rem;
+    }
+    .btn {
+        border-radius: 0 2.5rem 2.5rem 0;
+        padding-#{$left}: 1.91em;
+        padding-#{$right}: 1.91em;
+    }
+}
+
+@include mq(xl) {
+    .expanded-newsletter .pl-xl-10 {
+        padding-#{$left}: 5rem !important;
+    }
+}
+
+// Banner Newsletter
+.cta-section .title-separator {
+    color: #ccc;
+}
+.banner-newsletter {
+    background-color: #f5f5f5;
+    padding: 6.5rem 0 5rem;
+    overflow: hidden;
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        height: 59.2rem;
+        width: 58.8rem;
+        border: 3rem solid;
+        top: 53%;
+        transform: translateY(-50%) rotateZ(45deg);
+    }
+    &::before {
+        #{$right}: 98.8%;
+        border-color: #e7e7e7;
+        border-radius: 2rem;
+    }
+    &::after {
+        #{$left}: 93.3%;
+        top: 48%;
+        border-color: #f1f1f1;
+    }
+    .banner-content {
+        padding: 0 1.5rem;
+    }
+    .banner-title {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        strong {
+            font-weight: 800;
+        }
+    }
+    p {
+        margin-bottom: 2.2rem;
+        max-width: 62rem;
+        font-size: 1.3rem;
+        line-height: 2;
+    }
+    .input-wrapper {
+        margin-#{$left}: auto;
+        margin-#{$right}: auto;
+        max-width: 55.5rem;
+        min-height: 4.8rem;
+        &::before {
+            content: "\f0e0";
+            display: inline-block;
+            position: absolute;
+            font-weight: 600;
+            font-family: 'Font Awesome 5 Free';
+            font-size: 1.8rem;
+            color: $body-color;
+            line-height: 1;
+            #{$left}: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-top: -1rem;
+        }
+    }
+    input {
+        border: 0;
+        border-bottom: 2px solid #ccc;
+        margin-#{$right}: 1rem;
+        padding-#{$left}: 2.8rem;
+        min-height: 4.8rem;
+    }
+    .banner-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .btn {
+        padding: 1.08em 1.9em;
+        i {
+            font-size: 1.8rem;
+            margin-top: -0.4rem;
+        }
+    }
+}
+
+// Link Banner Newsletter
+.link-banner-newsletter {
+    display: flex;
+    align-items: center;
+    padding: side-values(5.25% 8.4% 4.1% 4.4%);
+    .banner-title {
+        margin-bottom: 0.6rem;
+        font-size: 2.6rem;
+    }
+    p {
+        max-width: 45.1rem;
+        margin-bottom: 2.2rem;
+        font-size: 1.3rem;
+    }
+    .input-wrapper-inline {
+        max-width: 44.8rem;
+    }
+    .input-wrapper-rounded .form-control {
+        min-height: 4.6rem;
+        padding: .8rem 1.8rem;
+        font-size: 1.3rem;
+        border-color: #454545;
+        border-radius: .3rem 0 0 .3rem;
+    }
+    .btn {
+        padding-#{$left}: 1.95em;
+        padding-#{$right}: 1.95em;
+        border-radius: 0 .3rem .3rem 0;
+    }
+    .content-right {
+        margin-top: .3rem;
+        a {
+            display: block;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+// Sale Banner
+.sale-banner {
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        #{$left}: 1px;
+        #{$right}: 1px;
+        top: 1px;
+        bottom: 1px;
+        border: 5px dashed #fff;
+        pointer-events: none;
+        clip-path: inset(4px 4px 4px 4px);
+    }
+    .banner-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .banner-subtitle {
+        position: relative;
+        margin-#{$right}: 2rem;
+        padding: side-values(2.6rem 7px 2.6rem 3.5rem);
+        font-size: 4em;
+        display: flex;
+        align-items: center;
+        background: #444;
+        line-height: 1.2;
+        z-index: 1;
+        white-space: nowrap;
+        span {
+            font-size: .45em;
+            font-weight: 400;
+        }
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            #{$right}: -24px;
+            top: -25px;
+            bottom: -20px;
+            border-#{$right}: 50px solid #454545;
+            transform: rotate(26deg);
+            z-index: -1;
+        }
+        &::after {
+            #{$right}: -35px;
+            border-#{$right}-width: 5px;
+        }
+    }
+    .content-right {
+        flex: 0 0 calc(100% - 25.7rem);
+        max-width: calc(100% - 25.7rem);
+        display: flex;
+        align-items: center;
+        padding: side-values(2.8rem 3.6rem 2.8rem 0);
+        background-color: #eee;
+    }
+    .banner-title {
+        overflow: hidden;
+        flex: 1;
+        font-size: 3.4em;
+        font-style: italic;
+        span {
+            white-space: nowrap;
+            animation: slideX 60s infinite linear 1s;
+            display: inline-block;
+        }
+        
+    }
+    .btn {
+        padding-#{$left}: 1.9em;
+        padding-#{$right}: 1.9em;
+        background-color: #444;
+        border-color: #444;
+        i {
+            margin-#{$left}: .3rem;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.sale-banner-section {
+    padding-bottom: .7rem;
+}
+
+// Banner with background image
+.banner-newsletter-bg {
+    display: flex;
+    align-items: center;
+    padding: 3rem 5.9rem;
+    .content-left {
+        margin-#{$right}: 5.3rem;
+    }
+    .content-right {
+        flex: 1;
+    }
+    .banner-title {
+        margin-bottom: .6rem;
+        font-size: 1.6rem;
+        line-height: 1;
+    }
+    p { 
+        font-size: 1.3rem;
+        line-height: 1; 
+    }
+    .input-wrapper {
+        display: flex;
+        max-width: 100%;
+    }
+    .form-control {
+        margin-right: 1rem;
+        padding-#{$left}: 1.5rem;
+        padding-#{$right}: 1.5rem;
+        border: none;
+        background-color: #fff;
+    }
+}
+
+@include mq(lg, max) {
+    .expanded-newsletter {
+        padding-#{$left}: 1.5rem;
+        padding-#{$right}: 1.5rem;
+        .icon-box-side {
+            justify-content: center;
+        }
+    }
+
+    .banner-newsletter-bg {
+        display: block;
+        text-align: center;
+        .content-left {
+            margin-#{$right}: 0;
+        }
+    }    
+}
+
+@include mq(md, max) {
+    .sale-banner {
+        .banner-content {
+            display: block;
+        }
+        .banner-subtitle {
+            padding-bottom: 0;
+            &::after, &::before {
+                #{$left}: -10px;
+                bottom: -20px;
+                top: auto;
+                border-top: 42px solid #454545;
+                transform: rotate(-3deg);
+            }
+            &::after {
+                bottom: -30px;
+                border-top-width: 5px;
+            }
+        }
+        .content-right {
+            display: block;
+            flex: none;
+            max-width: none;
+            margin-top: -4rem;
+            padding: 4rem 0 3rem;
+        }
+        .btn {
+            margin-#{$left}: 3rem;
+        }
+    }
+    .link-banner-newsletter {
+        display: block;
+        padding: 4rem 3rem 2rem;
+        .content-right {
+            display: flex;
+            flex-wrap: wrap;
+            a:first-child {
+                margin-#{$right}: 2rem;
+            }
+        }
+    }
+}
+
+@include mq(sm, max) {
+    .expanded-newsletter {
+        .icon-box-side {
+            display: block;
+            text-align: center;
+            .icon-box-icon {
+                padding: 1rem;
+                margin: 0 0 1.5rem;
+            }
+            .icon-box-content {
+                text-align: center;
+            }
+        }
+    }
+    .sale-banner {
+        font-size: .8rem;
+    }
+}
+
+@include mq(xs, max) {
+    .banner-newsletter .input-wrapper-inline {
+        display: block;
+        &::before {
+            top: 25%;
+        }
+    }
+
+    .banner-newsletter-bg  {
+        padding: 4rem 1.5rem;
+        .input-wrapper {
+            display: block;
+        }
+        .form-control {
+            margin-bottom: 1.5rem;
+            margin-#{$right}: 0;
+        }
+    }
+}

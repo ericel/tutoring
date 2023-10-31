@@ -1,0 +1,231 @@
+/*----------------------------------------
+    Animation
+        - Sticky Content
+-----------------------------------------*/
+
+.appear-animate {
+    visibility: hidden;
+    opacity: 0;
+}
+.appear-animation-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+// Sticky Content
+@keyframes fixedTopContent {
+    from {
+        transform: translateY(-100%);
+        transform-origin: center top 0px;
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fixedBottomContent {
+    from {
+        transform: translateY(100%);
+        transform-origin: center top 0px;
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+// Welcome Msg
+@keyframes showMsgFirst { 
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(if-ltr(-100%,100%)); 
+    }
+}
+@keyframes showMsg { 
+    from {
+        transform: translateX(if-ltr(100%,-100%)); 
+    }
+    to {
+        transform: translateX(if-ltr(-100%,100%)); 
+    }
+}
+
+// Nav Arrow Animation
+@keyframes navItemArrow {
+    0% {
+        position: relative;
+        #{$left}: -3px; 
+    }
+    50% {
+        position: relative;
+        #{$left}: 2px; 
+    }
+    100% {
+        position: relative;
+        #{$left}: -3px; 
+    } 
+}
+
+// Fade in Left
+@keyframes fadeInLeftShorter {
+    from {
+        opacity: 0;
+        transform: translate(if-ltr(50px,-50px), 0);
+        transform-origin: (0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+.fadeInLeftShorter {
+    animation-name: fadeInLeftShorter;
+}
+
+// Fade in Right
+@keyframes fadeInRightShorter {
+    from {
+        opacity: 0;
+        transform: translate(if-ltr(-50px,50px), 0);
+        transform-origin: (0,0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+.fadeInRightShorter {
+    animation-name: fadeInRightShorter;
+}
+
+// Fade in up shorter
+@keyframes fadeInUpShorter {
+    from {
+        opacity: 0;
+        transform: translate(0, 50px);
+        transform-origin: 0 0;
+    }
+    to {
+        opacity:1;
+        transform:none
+    }
+}
+.fadeInUpShorter {
+    animation-name: fadeInUpShorter
+}
+
+// Fade in down shorter
+@keyframes fadeInDownShorter {
+    from {
+        opacity: 0;
+        transform: translate(0,-50px);
+        transform-origin: 0 0;
+    }
+  
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+  
+.fadeInDownShorter {
+    animation-name: fadeInDownShorter
+}
+
+@keyframes flipInY {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 0;
+        transform: perspective(400px) rotateY(90deg);
+    }
+  
+    to {
+        transform: perspective(400px);
+    }
+}
+.flipInY {
+    animation-name: flipInY;
+}
+  
+@keyframes flipOutY {
+    0% {
+        animation-timing-function: ease-out;
+        transform: perspective(400px)
+    }
+
+    to {
+        opacity: 0;
+        transform: perspective(400px) rotateY(90deg)
+    }
+}
+
+@keyframes blurIn {
+    from {
+        opacity: 0;
+        filter: blur(20px);
+        transform: scale(1.2);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: none;
+    }
+}
+.blurIn {
+    animation-name: blurIn;
+}
+
+@keyframes grayOut {
+    from {
+        opacity: 1;
+        filter: grayscale(0);
+    }
+    15% {
+        filter: grayscale(100%);
+    }
+    to {
+        opacity: 0;
+        filter: grayscale(100%);
+    }
+}
+.grayOut {
+    animation-name: grayOut;
+}
+
+@keyframes brightIn {
+    0% {
+        animation-timing-function: ease-in;
+        filter: brightness(0%)
+    }
+  
+    to {
+        filter: brightness(100%)
+    }
+}
+  
+.brightIn {
+    animation-name: brightIn
+}
+
+@keyframes zoomIn {
+    0% {
+        -webkit-transform: scale3d(.3,.3,.3);
+        opacity: 0;
+        transform: scale3d(.3,.3,.3);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideX {
+    0% {
+        transform: none;
+        #{$left}: 100%;
+    }
+    100% {
+        transform: translateX(if-ltr( -100%,100%) );
+        #{$left}: 0;
+    }
+}

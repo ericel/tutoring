@@ -1,0 +1,99 @@
+/* -----------------------------------------------
+    Comments
+------------------------------------------------- */
+.comments {
+    .comment {
+        position: relative;
+        font-size: 1.3rem;
+        padding: 3rem 0;
+        border-top: 1px solid #eee;
+        padding: 4rem 0;
+        &:last-child {
+            padding-bottom: 2rem;
+        }
+    }
+    > li {
+        position: relative;
+        border-top: 1px solid $border-color;
+        font-size: 1.3rem;
+        padding: 3rem 0;
+    }
+
+    ul.children {
+        margin-#{$left}: 10rem;
+    }
+}
+
+.comment-body {
+    display: flex;
+  
+    .comment-content {
+        overflow: scroll;
+        .comment-markdown{
+            width: 100%;
+            overflow: scroll;
+            margin-bottom: 1.6rem;
+            line-height: 1.9;
+        }
+    }
+}
+
+.comment-avatar {
+    flex: 0 0 9rem;
+    max-width: 9rem;
+    margin-#{$right}: 2rem;
+}
+.comment-author {
+    margin: .5rem 0 1rem;
+    font-size: 1.8rem;
+    color: #333;
+    line-height: 1;
+    a {
+        margin-#{$right}: .4rem;
+        color: inherit;
+    }
+}
+.comment-date {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: $light-color;
+}
+.ratings-container.comment-rating {
+    margin-bottom: 1.3rem;
+}
+
+.comment-action {
+    > * {
+        margin-#{$right}: 2.4rem;
+    }
+    .btn i {
+        font-size: 1.4rem;
+    }
+}
+
+.review-image {
+    display: flex;
+    align-items: center;
+    figure {
+        max-width: 6rem;
+        margin-top: 2rem;
+        margin-#{$right}: .6rem;
+        border-radius: .3rem;
+        overflow: hidden;
+    }
+}
+.comment-count {
+    font-weight: bold !important;
+    margin-right: 1rem;
+}
+@include mq('sm', 'max') {
+    .comments {
+        .comment-action span { display: none; }
+        ul.children { margin-#{$left}: 3rem; }
+    }
+    .comment-avatar {
+        flex: 0 0 7rem;
+        max-width: 7rem;
+    }
+}
